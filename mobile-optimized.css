@@ -1,0 +1,18 @@
+/* 모바일 최적화 CSS */
+@media (max-width: 768px) {
+  html { font-size: 14px; }
+  body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+  
+  /* 네비게이션 */
+  nav .flex { padding: 0 1rem; }
+  nav a.text-2xl { font-size: 1.5rem !important; }
+  
+  /* Hero 슬라이더 */
+  .hero-slider { height: 100vh; min-height: 600px; }
+  .slide-content { padding: 0 1rem; max-width: 100%; }
+  .slide-title { font-size: 2rem !important; line-height: 1.2; margin-bottom: 1rem; }
+  .slide-subtitle { font-size: 1rem !important; line-height: 1.4; margin-bottom: 2rem; padding: 0 0.5rem; }
+  .slide-stats { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-bottom: 2rem; }
+  .stat-item { padding: 1rem 0.5rem; }
+  .stat-number { font-size: 1.5rem; }
+  .stat-label { font-size: 0.8rem; }

@@ -18,6 +18,41 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
     
+    <!-- 모바일 최적화 스타일 -->
+    <style>
+        @media (max-width: 768px) {
+            html { font-size: 14px; }
+            body { overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+            nav .flex { padding: 0 1rem; }
+            nav a.text-2xl { font-size: 1.4rem !important; }
+            .py-20 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; }
+            .py-12 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+            .max-w-7xl { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .text-4xl, .text-5xl { font-size: 1.875rem !important; line-height: 1.2; }
+            .text-3xl { font-size: 1.5rem !important; }
+            .text-2xl { font-size: 1.25rem !important; }
+            .text-xl { font-size: 1rem !important; line-height: 1.4; }
+            .md\\:grid-cols-3, .lg\\:grid-cols-2, .md\\:grid-cols-2 { grid-template-columns: 1fr !important; }
+            .grid-cols-2 { grid-template-columns: 1fr !important; }
+            .bg-white.p-8, .p-8 { padding: 1.25rem !important; }
+            .mb-16 { margin-bottom: 1.5rem !important; }
+            .mb-12 { margin-bottom: 1.25rem !important; }
+            .mb-8 { margin-bottom: 1rem !important; }
+            button, a { min-height: 44px; }
+            .chart-container { height: 300px !important; }
+            canvas { max-height: 280px !important; }
+            .data-table { overflow-x: auto; font-size: 0.8rem; }
+        }
+        
+        @media (max-width: 375px) {
+            .max-w-7xl { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+            .text-4xl, .text-5xl { font-size: 1.5rem !important; }
+            .p-6 { padding: 1rem !important; }
+            .chart-container { height: 250px !important; }
+            .data-table { font-size: 0.7rem; }
+        }
+    </style>
+    
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
