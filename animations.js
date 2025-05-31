@@ -472,4 +472,9 @@ const AnimationUtils = {
     }
 };
 
-export { AnimatedCounter, StatsAnimationManager, ParticleSystem, TypingAnimation, AnimationUtils };
+// 브라우저 전역에서 사용 가능하도록 설정
+window.AnimatedCounter = AnimatedCounter;
+window.StatsAnimationManager = StatsAnimationManager;
+window.ParticleSystem = ParticleSystem;
+window.TypingAnimation = TypingAnimation;
+window.AnimationUtils = AnimationUtils;

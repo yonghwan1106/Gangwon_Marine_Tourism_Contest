@@ -516,4 +516,11 @@ function createCompetitorChart() {
 // 전역 차트 관리자
 const globalChartManager = new EnhancedChartManager();
 
-export { EnhancedChartManager, createMarketChart, createRegionChart, createTrendChart, createBusinessChart, createCompetitorChart };
+// 브라우저 전역에서 사용 가능하도록 설정
+window.EnhancedChartManager = EnhancedChartManager;
+window.createMarketChart = createMarketChart;
+window.createRegionChart = createRegionChart;
+window.createTrendChart = createTrendChart;
+window.createBusinessChart = createBusinessChart;
+window.createCompetitorChart = createCompetitorChart;
+window.globalChartManager = globalChartManager;

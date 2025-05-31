@@ -536,5 +536,6 @@ const ScrollUtils = {
     }
 };
 
-// 내보내기
-export { ScrollAnimationManager, ScrollUtils };
+// 브라우저 전역에서 사용 가능하도록 설정
+window.ScrollAnimationManager = ScrollAnimationManager;
+window.ScrollUtils = ScrollUtils;

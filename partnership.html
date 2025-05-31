@@ -95,6 +95,19 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700">홈</a>
+                <a href="datalab_analysis_report.html" class="block px-3 py-2 text-gray-700">데이터 분석</a>
+                <a href="benchmarking.html" class="block px-3 py-2 text-gray-700">벤치마킹</a>
+                <a href="partnership.html" class="block px-3 py-2 text-primary-blue font-semibold">파트너십</a>
+                <a href="business.html" class="block px-3 py-2 text-gray-700">비즈니스</a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-700">일정표</a>
+                <a href="proposal.html" class="block px-3 py-2 text-gray-700">종합 제안서</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -617,6 +630,63 @@
             createPartnerDistributionChart();
             createPartnerTypeChart();
         });
+
+        // Mobile menu toggle - display 스타일 직접 조작 방식
+        (function() {
+            function initMobileMenu() {
+                console.log('파트너십 - 모바일 메뉴 초기화 시작');
+                
+                const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
+                
+                console.log('파트너십 - 버튼:', mobileMenuBtn);
+                console.log('파트너십 - 메뉴:', mobileMenu);
+                
+                if (mobileMenuBtn && mobileMenu) {
+                    console.log('파트너십 - 요소들 찾음, 이벤트 등록');
+                    
+                    // 초기 상태 설정 (확실하게 숨김)
+                    mobileMenu.style.display = 'none';
+                    
+                    // onclick 방식으로 직접 할당
+                    mobileMenuBtn.onclick = function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        console.log('파트너십 - 햄버거 버튼 클릭됨');
+                        
+                        // display 스타일로 직접 제어
+                        if (mobileMenu.style.display === 'none' || mobileMenu.style.display === '') {
+                            mobileMenu.style.display = 'block';
+                            console.log('파트너십 - 메뉴 열림 (display: block)');
+                        } else {
+                            mobileMenu.style.display = 'none';
+                            console.log('파트너십 - 메뉴 닫힘 (display: none)');
+                        }
+                        
+                        return false;
+                    };
+                    
+                    // 외부 클릭으로 닫기
+                    document.addEventListener('click', function(e) {
+                        if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                            mobileMenu.style.display = 'none';
+                            console.log('파트너십 - 외부 클릭으로 메뉴 닫힘');
+                        }
+                    });
+                    
+                    console.log('파트너십 - 모바일 메뉴 설정 완료');
+                } else {
+                    console.error('파트너십 - 모바일 메뉴 요소를 찾을 수 없습니다');
+                }
+            }
+            
+            // DOM 상태 확인 후 실행
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initMobileMenu);
+            } else {
+                setTimeout(initMobileMenu, 100); // 다른 스크립트 실행 후 지연 실행
+            }
+        })();
     </script>
 </body>
 </html>
