@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비즈니스 모델 | 제로웨이스트 바다 워케이션</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full nav-glass shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-primary-blue font-semibold">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-[60vh] flex items-center relative overflow-hidden mt-16">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    💰 <span class="text-yellow-300">비즈니스</span> 모델
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    연 6억원 매출, 15.3% 순이익률의 안정적 수익 구조
+                </p>
+                
+                <!-- 핵심 지표 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-yellow-300">6억원</div>
+                        <p class="text-sm opacity-80">연간 매출 (1년차)</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-yellow-300">15.3%</div>
+                        <p class="text-sm opacity-80">순이익률</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-3xl font-bold text-yellow-300">4-5년</div>
+                        <p class="text-sm opacity-80">투자 회수</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="800">
+                        <div class="text-3xl font-bold text-yellow-300">25%</div>
+                        <p class="text-sm opacity-80">연 수익률</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 수익 구조 분석 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">📊 수익 구조 분석</h2>
+                <p class="text-xl text-gray-600">다각화된 안정적 수익 모델</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- 수익원별 차트 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">💼 수익원별 구성</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="revenueSourceChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-6 grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600">60%</div>
+                            <p class="text-sm text-gray-600">패키지 판매</p>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600">25%</div>
+                            <p class="text-sm text-gray-600">파트너 수수료</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-50 rounded-lg">
+                            <div class="text-2xl font-bold text-purple-600">10%</div>
+                            <p class="text-sm text-gray-600">기술 라이선스</p>
+                        </div>
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <div class="text-2xl font-bold text-orange-600">5%</div>
+                            <p class="text-sm text-gray-600">기타 수익</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 월별 매출 예측 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">📅 월별 매출 예측</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div style="position: relative; height: 300px; width: 100%;">
+                            <canvas id="monthlyRevenueChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-6 bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg">
+                        <h4 class="font-bold text-gray-900 mb-4">💡 계절성 분석</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-center">
+                                <span class="w-3 h-3 bg-blue-500 rounded-full mr-2"></span>
+                                <span>성수기 (6-8월): 월 평균 8,000만원</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-3 h-3 bg-green-500 rounded-full mr-2"></span>
+                                <span>중수기 (4-5, 9-10월): 월 평균 5,000만원</span>
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+                                <span>비수기 (11-3월): 월 평균 3,000만원</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 수익성 지표 -->
+            <div class="bg-gradient-to-r from-gray-50 to-blue-50 p-8 rounded-2xl" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">📈 주요 수익성 지표</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">💵</div>
+                        <h4 class="font-bold text-gray-900">총 매출</h4>
+                        <p class="text-2xl font-bold text-blue-600">6.45억원</p>
+                        <p class="text-sm text-gray-600">1년차 기준</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">📊</div>
+                        <h4 class="font-bold text-gray-900">총 비용</h4>
+                        <p class="text-2xl font-bold text-green-600">5.46억원</p>
+                        <p class="text-sm text-gray-600">운영비 포함</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">💰</div>
+                        <h4 class="font-bold text-gray-900">순이익</h4>
+                        <p class="text-2xl font-bold text-purple-600">9,900만원</p>
+                        <p class="text-sm text-gray-600">15.3% 마진</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">🎯</div>
+                        <h4 class="font-bold text-gray-900">목표 달성</h4>
+                        <p class="text-2xl font-bold text-orange-600">120%</p>
+                        <p class="text-sm text-gray-600">보수적 예측 대비</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5년 성장 계획 -->
+    <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🚀 5년 성장 계획</h2>
+                <p class="text-xl text-gray-600">단계적 확장으로 20억원 매출 달성</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- 연차별 성장 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">📈 연차별 성장 시나리오</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold text-gray-900">1년차 (2025)</h4>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold">기반 구축</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-600">목표 참가자</p>
+                                    <p class="text-xl font-bold text-blue-600">1,000명</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">예상 매출</p>
+                                    <p class="text-xl font-bold text-blue-600">6.45억원</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-blue-500 h-2 rounded-full transition-all duration-1000" style="width: 32%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold text-gray-900">2년차 (2026)</h4>
+                                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-semibold">확장</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-600">목표 참가자</p>
+                                    <p class="text-xl font-bold text-green-600">2,000명</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">예상 매출</p>
+                                    <p class="text-xl font-bold text-green-600">12억원</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full transition-all duration-1000" style="width: 60%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+                            <div class="flex justify-between items-center mb-2">
+                                <h4 class="text-lg font-bold text-gray-900">3년차 (2027)</h4>
+                                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-semibold">안정화</span>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-600">목표 참가자</p>
+                                    <p class="text-xl font-bold text-purple-600">5,000명</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">예상 매출</p>
+                                    <p class="text-xl font-bold text-purple-600">20억원</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-purple-500 h-2 rounded-full transition-all duration-1000" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 성장 동력 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">⚡ 성장 동력</h3>
+                    <div class="space-y-6">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🌊</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">지역 확장</h4>
+                                    <p class="text-sm text-gray-600">동해안 6개 시군 순차 진출</p>
+                                </div>
+                            </div>
+                            <div class="ml-16">
+                                <ul class="text-sm space-y-1">
+                                    <li>• 1년차: 강릉-동해 집중</li>
+                                    <li>• 2년차: 속초-삼척 확장</li>
+                                    <li>• 3년차: 고성-양양 진출</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mr-4">📱</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">기술 고도화</h4>
+                                    <p class="text-sm text-gray-600">AI 기반 개인화 서비스</p>
+                                </div>
+                            </div>
+                            <div class="ml-16">
+                                <ul class="text-sm space-y-1">
+                                    <li>• AI 추천 시스템 도입</li>
+                                    <li>• 실시간 데이터 분석</li>
+                                    <li>• 맞춤형 코스 생성</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🏢</div>
+                                <div>
+                                    <h4 class="font-bold text-gray-900">B2B 확장</h4>
+                                    <p class="text-sm text-gray-600">기업 연수 프로그램</p>
+                                </div>
+                            </div>
+                            <div class="ml-16">
+                                <ul class="text-sm space-y-1">
+                                    <li>• 기업 ESG 프로그램</li>
+                                    <li>• 팀빌딩 워케이션</li>
+                                    <li>• 임직원 복지 제품</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 성장 차트 -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg overflow-hidden" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">📊 5년 성장 예측</h3>
+                <div class="chart-container" style="position: relative; height: 400px; width: 100%; max-width: 100%; overflow: hidden;">
+                    <canvas id="growthChart" style="max-width: 100%; max-height: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 투자 및 ROI 분석 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">💼 투자 및 ROI 분석</h2>
+                <p class="text-xl text-gray-600">안정적 투자 회수와 지속가능한 성장</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <!-- 초기 투자 계획 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">🏗️ 초기 투자 계획</h3>
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl">
+                        <div class="text-center mb-6">
+                            <div class="text-4xl font-bold text-blue-600 mb-2">2억원</div>
+                            <p class="text-blue-700">총 초기 투자</p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="font-semibold">시설 구축</span>
+                                <span class="text-blue-600 font-bold">8,000만원</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="font-semibold">기술 개발</span>
+                                <span class="text-blue-600 font-bold">6,000만원</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="font-semibold">마케팅</span>
+                                <span class="text-blue-600 font-bold">4,000만원</span>
+                            </div>
+                            <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                <span class="font-semibold">운영 자금</span>
+                                <span class="text-blue-600 font-bold">2,000만원</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROI 계산기 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">📈 ROI 계산기</h3>
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <div class="space-y-6">
+                            <div class="text-center p-4 bg-green-50 rounded-lg">
+                                <h4 class="font-bold text-green-800 mb-2">투자 회수 기간</h4>
+                                <div class="text-3xl font-bold text-green-600">4-5년</div>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center p-3 bg-blue-50 rounded-lg">
+                                    <p class="text-sm text-gray-600">연평균 수익률</p>
+                                    <p class="text-xl font-bold text-blue-600">25%</p>
+                                </div>
+                                <div class="text-center p-3 bg-purple-50 rounded-lg">
+                                    <p class="text-sm text-gray-600">NPV (5년)</p>
+                                    <p class="text-xl font-bold text-purple-600">3.2억원</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-4 rounded-lg">
+                                <h4 class="font-bold text-orange-800 mb-2">5년 누적 수익</h4>
+                                <div class="text-2xl font-bold text-orange-600">12억원</div>
+                                <p class="text-sm text-orange-700">초기 투자 대비 600% 수익</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 투자 회수 타임라인 -->
+            <div class="bg-gradient-to-r from-gray-50 to-blue-50 p-8 rounded-2xl" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">⏰ 투자 회수 타임라인</h3>
+                <div class="relative">
+                    <!-- 타임라인 선 -->
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-red-500 via-yellow-500 to-green-500"></div>
+                    
+                    <div class="space-y-8">
+                        <!-- Year 1 -->
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h4 class="font-bold text-red-600">1년차</h4>
+                                    <p class="text-sm">-1.01억원 (투자 회수 시작)</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+
+                        <!-- Year 2 -->
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+                            <div class="w-1/2 pl-8">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h4 class="font-bold text-orange-600">2년차</h4>
+                                    <p class="text-sm">+40% 회수 (누적 -60%)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Year 4 -->
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8 text-right">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h4 class="font-bold text-yellow-600">4년차</h4>
+                                    <p class="text-sm">+100% 회수 완료</p>
+                                </div>
+                            </div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">4</div>
+                            <div class="w-1/2 pl-8"></div>
+                        </div>
+
+                        <!-- Year 5 -->
+                        <div class="relative flex items-center">
+                            <div class="w-1/2 pr-8"></div>
+                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">5</div>
+                            <div class="w-1/2 pl-8">
+                                <div class="bg-white p-4 rounded-lg shadow-md">
+                                    <h4 class="font-bold text-green-600">5년차</h4>
+                                    <p class="text-sm">+600% 순수익 달성</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 리스크 분석 및 대응 -->
+    <section class="py-20 bg-gradient-to-br from-orange-50 to-red-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">⚠️ 리스크 분석 및 대응</h2>
+                <p class="text-xl text-gray-600">체계적 리스크 관리로 안정성 확보</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 시장 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white text-xl mr-4">📉</div>
+                        <h3 class="text-lg font-bold text-gray-900">시장 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">경기 침체로 여행 수요 감소</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">B2B 시장 확대, 가격 다양화</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 운영 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl mr-4">⚙️</div>
+                        <h3 class="text-lg font-bold text-gray-900">운영 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">날씨 의존성, 파트너 이탈</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">실내 프로그램 확대, 계약 안정화</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기술 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl mr-4">💻</div>
+                        <h3 class="text-lg font-bold text-gray-900">기술 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">IoT 시스템 오류, 보안 문제</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">백업 시스템, 정기 점검</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 경쟁 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🏆</div>
+                        <h3 class="text-lg font-bold text-gray-900">경쟁 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">대기업 진입, 카피캣 서비스</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">기술 특허, 브랜드 강화</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 재무 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mr-4">💰</div>
+                        <h3 class="text-lg font-bold text-gray-900">재무 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">초기 현금흐름 부족</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">단계적 투자, 예약금 활용</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 규제 리스크 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white text-xl mr-4">📋</div>
+                        <h3 class="text-lg font-bold text-gray-900">규제 리스크</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-red-600 text-sm">리스크</h4>
+                            <p class="text-xs text-red-700">관광업 규제 변화</p>
+                        </div>
+                        <div class="bg-green-50 p-3 rounded-lg">
+                            <h4 class="font-semibold text-green-600 text-sm">대응책</h4>
+                            <p class="text-xs text-green-700">정부 정책 모니터링, 컴플라이언스</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    💼 투자 및 사업 제안
+                </h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    연 25% 수익률, 4-5년 투자 회수의 안정적 비즈니스 모델
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-lg hover:bg-blue-50 transition-colors">
+                        📋 전체 제안서 보기
+                    </a>
+                    <a href="mailto:business@zerowasteworkation.kr" class="bg-blue-800 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-900 transition-colors">
+                        📧 투자 문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">🌊 제로웨이스트 워케이션</h3>
+                    <p class="text-gray-300">MZ세대를 위한 지속가능한 바다 여행의 새로운 패러다임</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">비즈니스 정보</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>연 6억원 매출</li>
+                        <li>15.3% 순이익률</li>
+                        <li>4-5년 투자 회수</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📧 business@zerowasteworkation.kr</li>
+                        <li>📞 033-269-8981</li>
+                        <li>🏆 2025 강원 해양관광 공모전</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 제로웨이스트 바다 워케이션 루트. 강원특별자치도 해양 관광 콘텐츠 공모전 출품작.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 차트 생성
+        document.addEventListener('DOMContentLoaded', function() {
+            // 수익원별 차트
+            const revenueCtx = document.getElementById('revenueSourceChart').getContext('2d');
+            new Chart(revenueCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['패키지 판매', '파트너 수수료', '기술 라이선스', '기타 수익'],
+                    datasets: [{
+                        data: [60, 25, 10, 5],
+                        backgroundColor: ['#0EA5E9', '#10B981', '#8B5CF6', '#F59E0B'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 1,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 월별 매출 차트
+            const monthlyCtx = document.getElementById('monthlyRevenueChart').getContext('2d');
+            new Chart(monthlyCtx, {
+                type: 'line',
+                data: {
+                    labels: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+                    datasets: [{
+                        label: '월별 매출 (천만원)',
+                        data: [3, 3, 3.5, 5, 5.5, 7, 8, 8, 6, 5, 4, 3.5],
+                        borderColor: '#0EA5E9',
+                        backgroundColor: 'rgba(14, 165, 233, 0.1)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointHoverRadius: 7
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    aspectRatio: 1.5,
+                    plugins: { 
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '매출 (천만원)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '월'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 5년 성장 차트
+            const growthCtx = document.getElementById('growthChart').getContext('2d');
+            new Chart(growthCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['1년차', '2년차', '3년차', '4년차', '5년차'],
+                    datasets: [
+                        {
+                            label: '매출 (억원)',
+                            data: [6.45, 12, 20, 35, 50],
+                            backgroundColor: '#0EA5E9',
+                            yAxisID: 'y'
+                        },
+                        {
+                            label: '참가자 (천명)',
+                            data: [1, 2, 5, 8, 12],
+                            type: 'line',
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            yAxisID: 'y1',
+                            borderWidth: 3,
+                            pointRadius: 6
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { 
+                            type: 'linear', 
+                            display: true, 
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: '매출 (억원)'
+                            },
+                            beginAtZero: true
+                        },
+                        y1: { 
+                            type: 'linear', 
+                            display: true, 
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: '참가자 (천명)'
+                            },
+                            beginAtZero: true,
+                            grid: { drawOnChartArea: false }
+                        }
+                    },
+                    layout: {
+                        padding: {
+                            top: 10,
+                            bottom: 10,
+                            left: 10,
+                            right: 10
+                        }
+                    }
+                }
+            });
+        });
+
+        // 모바일 메뉴 토글
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            console.log('Mobile menu clicked');
+        });
+    </script>
+</body>
+</html>

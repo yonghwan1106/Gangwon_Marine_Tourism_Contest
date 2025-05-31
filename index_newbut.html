@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제로웨이스트 바다 워케이션 루트 | 2025 강원 해양관광 공모전</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="micro-interactions.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- 스크롤 진행률 표시줄 (JavaScript로 동적 생성) -->
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient floating">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-primary-blue font-semibold">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-primary-blue font-semibold">홈</a>
+                <a href="datalab_analysis_report.html" class="block px-3 py-2 text-gray-700">데이터 분석</a>
+                <a href="benchmarking.html" class="block px-3 py-2 text-gray-700">벤치마킹</a>
+                <a href="partnership.html" class="block px-3 py-2 text-gray-700">파트너십</a>
+                <a href="business.html" class="block px-3 py-2 text-gray-700">비즈니스</a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-700">일정표</a>
+                <a href="proposal.html" class="block px-3 py-2 text-gray-700">종합 제안서</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <section id="hero" class="relative min-h-screen overflow-hidden">
+        
+        <!-- Slider Container -->
+        <div class="hero-slider">
+            
+            <!-- Slide 1: 워케이션 소개 -->
+            <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-cottonbro-7047425.jpg');">
+                <div class="slide-content">
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="slide-title typing-cursor">
+                            일하면서 <span class="text-highlight text-yellow-300">지구도 살리는</span><br>
+                            새로운 여행 문화
+                        </h1>
+                        <p class="slide-subtitle">
+                            국내 최초 제로웨이스트 워케이션으로 MZ세대의 워라밸과 환경보호를 동시에 실현
+                        </p>
+                        <div class="slide-stats">
+                            <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="200">
+                                <div class="stat-number text-yellow-300" data-counter="93" data-suffix="점">93점</div>
+                                <p class="stat-label">A+ 등급</p>
+                            </div>
+                            <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="400">
+                                <div class="stat-number text-yellow-300" data-counter="6" data-suffix="억원">6억원</div>
+                                <p class="stat-label">연 예상 매출</p>
+                            </div>
+                            <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="600">
+                                <div class="stat-number text-yellow-300" data-counter="30" data-suffix="톤">30톤</div>
+                                <p class="stat-label">플라스틱 절감</p>
+                            </div>
+                            <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="800">
+                                <div class="stat-number text-yellow-300" data-counter="2400" data-suffix="명">2,400명</div>
+                                <p class="stat-label">연 이용 목표</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2: 차별화 포인트 -->
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-vlad-chesnokov-3682293.jpg');">
+                <div class="slide-content">
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="slide-title">
+                            <span class="text-primary-green">5가지 차별화</span> 포인트
+                        </h1>
+                        <p class="slide-subtitle">
+                            기존 워케이션과는 완전히 다른 혁신적 접근법
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
+                            <div class="difference-card card-hover" data-aos="fade-up" data-aos-delay="200">
+                                <div class="icon-spin text-4xl mb-4">🌱</div>
+                                <h3 class="text-xl font-bold text-white mb-2">국내 최초 제로웨이스트</h3>
+                                <p class="text-gray-300">IoT 기반 폐기물 추적시스템</p>
+                            </div>
+                            <div class="difference-card card-hover" data-aos="fade-up" data-aos-delay="400">
+                                <div class="icon-bounce text-4xl mb-4">💻</div>
+                                <h3 class="text-xl font-bold text-white mb-2">MZ 맞춤 스마트 워크</h3>
+                                <p class="text-gray-300">AI 추천 작업환경 최적화</p>
+                            </div>
+                            <div class="difference-card card-hover" data-aos="fade-up" data-aos-delay="600">
+                                <div class="icon-pulse text-4xl mb-4">🤝</div>
+                                <h3 class="text-xl font-bold text-white mb-2">15개 파트너 네트워크</h3>
+                                <p class="text-gray-300">지역상생 수익구조</p>
+                            </div>
+                            <div class="difference-card card-hover" data-aos="fade-up" data-aos-delay="800">
+                                <div class="icon-spin text-4xl mb-4">📱</div>
+                                <h3 class="text-xl font-bold text-white mb-2">실시간 환경 측정</h3>
+                                <p class="text-gray-300">개인 환경기여도 추적</p>
+                            </div>
+                            <div class="difference-card card-hover" data-aos="fade-up" data-aos-delay="1000">
+                                <div class="icon-bounce text-4xl mb-4">📊</div>
+                                <h3 class="text-xl font-bold text-white mb-2">데이터 기반 검증</h3>
+                                <p class="text-gray-300">네이버 데이터랩 93점 A+</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: 3박4일 코스 -->
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-jess-loiterton-4321194.jpg');">
+                <div class="slide-content">
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="slide-title">
+                            <span class="text-primary-teal">3박4일</span> 워케이션 코스
+                        </h1>
+                        <p class="slide-subtitle">
+                            8개 특별 포토존과 제로웨이스트 실천 프로그램
+                        </p>
+                        <div class="timeline-container mt-12">
+                            <div class="timeline-item card-hover" data-aos="fade-right" data-aos-delay="200">
+                                <div class="timeline-day">Day 1</div>
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">강릉 도착 & 셋업</h3>
+                                    <p class="text-gray-300">커피박 업사이클링 워크샵</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item card-hover" data-aos="fade-left" data-aos-delay="400">
+                                <div class="timeline-day">Day 2</div>
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">동해 워킹 & 비치클린</h3>
+                                    <p class="text-gray-300">IoT 폐기물 측정 및 포토존 탐방</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item card-hover" data-aos="fade-right" data-aos-delay="600">
+                                <div class="timeline-day">Day 3</div>
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">속초 집중 워크데이</h3>
+                                    <p class="text-gray-300">친환경 콘텐츠 제작 및 공유</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item card-hover" data-aos="fade-left" data-aos-delay="800">
+                                <div class="timeline-day">Day 4</div>
+                                <div class="timeline-content">
+                                    <h3 class="text-xl font-bold text-white">성과 공유 & 마무리</h3>
+                                    <p class="text-gray-300">환경 기여도 인증서 발급</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4: 기술 혁신 -->
+            <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img/pexels-mikael-blomkvist-6476260.jpg');">
+                <div class="slide-content">
+                    <div data-aos="fade-up" data-aos-duration="1000">
+                        <h1 class="slide-title">
+                            <span class="text-secondary-purple">혁신 기술</span> 시스템
+                        </h1>
+                        <p class="slide-subtitle">
+                            IoT, AI, 블록체인으로 완성된 스마트 워케이션
+                        </p>
+                        <div class="tech-grid mt-12">
+                            <div class="tech-card card-hover" data-aos="zoom-in" data-aos-delay="200">
+                                <div class="tech-icon text-4xl mb-4 icon-pulse">🔌</div>
+                                <h3 class="text-xl font-bold text-white mb-2">IoT 측정 시스템</h3>
+                                <p class="text-gray-300">실시간 폐기물 및 에너지 사용량 추적</p>
+                                <div class="progress-bar mt-4">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="tech-card card-hover" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="tech-icon text-4xl mb-4 icon-spin">🤖</div>
+                                <h3 class="text-xl font-bold text-white mb-2">AI 작업환경 최적화</h3>
+                                <p class="text-gray-300">개인별 맞춤 워크스페이스 추천</p>
+                                <div class="progress-bar mt-4">
+                                    <div class="progress-fill" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div class="tech-card card-hover" data-aos="zoom-in" data-aos-delay="600">
+                                <div class="tech-icon text-4xl mb-4 icon-bounce">📱</div>
+                                <h3 class="text-xl font-bold text-white mb-2">워케이션 전용 앱</h3>
+                                <p class="text-gray-300">올인원 예약-관리-인증 플랫폼</p>
+                                <div class="progress-bar mt-4">
+                                    <div class="progress-fill" style="width: 92%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Navigation -->
+        <div class="slider-nav">
+            <button class="slider-btn active" data-slide="0"></button>
+            <button class="slider-btn" data-slide="1"></button>
+            <button class="slider-btn" data-slide="2"></button>
+            <button class="slider-btn" data-slide="3"></button>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-control prev" onclick="previousSlide()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+        </button>
+        <button class="slider-control next" onclick="nextSlide()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+        </button>
+    </section>
+
+    <!-- Quick Navigation Cards -->
+    <section class="py-16 bg-white" data-parallax="0.3">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4" data-aos="fade-up">
+                    상세 분석 보고서
+                </h2>
+                <p class="text-xl text-gray-600" data-aos="fade-up" data-aos-delay="200">
+                    A+ 등급 프로젝트의 전문적 분석 자료
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 데이터 분석 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="nav-card-icon icon-bounce">📊</div>
+                    <h3 class="nav-card-title">데이터 분석</h3>
+                    <p class="nav-card-description">네이버 데이터랩 기반 시장성 검증 및 트렌드 분석</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge tooltip" data-tooltip="시장성 점수">93점</span>
+                        <span class="stat-badge tooltip" data-tooltip="MZ세대 관심도">100%</span>
+                    </div>
+                    <a href="datalab_analysis_report.html" class="nav-card-link btn-primary">분석 보기</a>
+                </div>
+
+                <!-- 벤치마킹 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="nav-card-icon icon-pulse">🎯</div>
+                    <h3 class="nav-card-title">벤치마킹</h3>
+                    <p class="nav-card-description">경쟁사 분석 및 차별화 전략 상세 비교</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge">차별성 96점</span>
+                        <span class="stat-badge">혁신성 95점</span>
+                    </div>
+                    <a href="benchmarking.html" class="nav-card-link btn-primary">분석 보기</a>
+                </div>
+
+                <!-- 파트너십 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="600">
+                    <div class="nav-card-icon icon-spin">🤝</div>
+                    <h3 class="nav-card-title">파트너십</h3>
+                    <p class="nav-card-description">15개 파트너사 네트워크 및 상생 수익구조</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge">15개 파트너</span>
+                        <span class="stat-badge">6개 지역</span>
+                    </div>
+                    <a href="partnership.html" class="nav-card-link btn-primary">네트워크 보기</a>
+                </div>
+
+                <!-- 비즈니스 모델 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="800">
+                    <div class="nav-card-icon icon-bounce">💰</div>
+                    <h3 class="nav-card-title">비즈니스 모델</h3>
+                    <p class="nav-card-description">5년 성장 시나리오 및 수익성 분석</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge" data-counter="6" data-suffix="억원">6억원</span>
+                        <span class="stat-badge">연 매출</span>
+                    </div>
+                    <a href="business.html" class="nav-card-link btn-primary">모델 보기</a>
+                </div>
+
+                <!-- 일정표 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="1000">
+                    <div class="nav-card-icon icon-pulse">📅</div>
+                    <h3 class="nav-card-title">상세 일정표</h3>
+                    <p class="nav-card-description">3박4일 워케이션 상세 스케줄 및 활동</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge">3박4일</span>
+                        <span class="stat-badge">8개 포토존</span>
+                    </div>
+                    <a href="schedule.html" class="nav-card-link btn-primary">일정 보기</a>
+                </div>
+
+                <!-- 종합 제안서 카드 -->
+                <div class="nav-card card-hover" data-aos="fade-up" data-aos-delay="1200">
+                    <div class="nav-card-icon icon-spin">📋</div>
+                    <h3 class="nav-card-title">종합 제안서</h3>
+                    <p class="nav-card-description">전체 프로젝트 요약 및 PDF 다운로드</p>
+                    <div class="nav-card-stats">
+                        <span class="stat-badge">A+ 등급</span>
+                        <span class="stat-badge">93점</span>
+                    </div>
+                    <a href="proposal.html" class="nav-card-link btn-primary">제안서 보기</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">제로웨이스트 바다 워케이션</h3>
+                    <p class="text-gray-400">
+                        일하면서 지구도 살리는 새로운 여행 문화를 만들어갑니다.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">주요 페이지</h4>
+                    <ul class="space-y-2">
+                        <li><a href="datalab_analysis_report.html" class="text-gray-400 hover:text-white transition-colors">데이터 분석</a></li>
+                        <li><a href="benchmarking.html" class="text-gray-400 hover:text-white transition-colors">벤치마킹</a></li>
+                        <li><a href="partnership.html" class="text-gray-400 hover:text-white transition-colors">파트너십</a></li>
+                        <li><a href="business.html" class="text-gray-400 hover:text-white transition-colors">비즈니스</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">프로젝트 정보</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>2025 강원특별자치도 해양 관광 콘텐츠 공모전</li>
+                        <li>체류형 테마여행 코스 부문</li>
+                        <li>A+ 등급 (93점)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 제로웨이스트 바다 워케이션 루트. 강원특별자치도 해양관광 공모전 출품작.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="animations.js"></script>
+    <script src="enhanced-charts.js"></script>
+    <script src="scroll-animations.js"></script>
+    
+    <!-- 추가 스크립트 -->
+    <script>
+        // 모바일 메뉴 토글
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 슬라이더 기능
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const sliderBtns = document.querySelectorAll('.slider-btn');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            sliderBtns.forEach(btn => btn.classList.remove('active'));
+            
+            slides[index].classList.add('active');
+            sliderBtns[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % totalSlides;
+            showSlide(next);
+        }
+
+        function previousSlide() {
+            const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(prev);
+        }
+
+        // 슬라이더 버튼 이벤트
+        sliderBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => showSlide(index));
+        });
+
+        // 자동 슬라이드 (선택사항)
+        let slideInterval = setInterval(nextSlide, 8000);
+
+        // 마우스 호버시 자동 슬라이드 정지
+        const heroSection = document.getElementById('hero');
+        heroSection.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        heroSection.addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 8000);
+        });
+
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 페이지 로드 완료 후 추가 초기화
+        window.addEventListener('load', function() {
+            // 지연된 애니메이션 시작
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 500);
+        });
+    </script>
+</body>
+</html>

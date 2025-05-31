@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종합 제안서 | 제로웨이스트 바다 워케이션 루트</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-primary-blue font-semibold">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700">홈</a>
+                <a href="datalab_analysis_report.html" class="block px-3 py-2 text-gray-700">데이터 분석</a>
+                <a href="benchmarking.html" class="block px-3 py-2 text-gray-700">벤치마킹</a>
+                <a href="partnership.html" class="block px-3 py-2 text-gray-700">파트너십</a>
+                <a href="business.html" class="block px-3 py-2 text-gray-700">비즈니스</a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-700">일정표</a>
+                <a href="proposal.html" class="block px-3 py-2 text-primary-blue font-semibold">종합 제안서</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-primary-blue via-primary-teal to-primary-green overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    📋 <span class="text-yellow-300">종합 제안서</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto">
+                    제로웨이스트 바다 워케이션 루트<br>
+                    2025 강원특별자치도 해양 관광 콘텐츠 공모전 제출안
+                </p>
+                
+                <!-- Key Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">93점</div>
+                        <div class="text-white text-sm">A+ 등급</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">6억원</div>
+                        <div class="text-white text-sm">연간 매출</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">30톤</div>
+                        <div class="text-white text-sm">플라스틱 절감</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="500">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">15개</div>
+                        <div class="text-white text-sm">파트너 업체</div>
+                    </div>
+                </div>
+                
+                <!-- Download Button -->
+                <button onclick="downloadPDF()" class="bg-white text-primary-blue px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg" data-aos="fade-up" data-aos-delay="600">
+                    📄 PDF 제안서 다운로드
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    🎯 <span class="text-gradient">Executive Summary</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    일하면서 지구도 살리는 새로운 여행 문화
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div data-aos="fade-right">
+                    <h3 class="text-3xl font-bold text-gray-900 mb-6">프로젝트 개요</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-primary-blue rounded-full mt-2"></div>
+                            <p class="text-gray-700"><strong>콘텐츠명:</strong> 제로웨이스트 바다 워케이션 루트</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-primary-green rounded-full mt-2"></div>
+                            <p class="text-gray-700"><strong>대상 지역:</strong> 강릉시 - 동해시 연계</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-primary-teal rounded-full mt-2"></div>
+                            <p class="text-gray-700"><strong>타겟:</strong> MZ세대 직장인, 디지털 노마드</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="w-2 h-2 bg-secondary-orange rounded-full mt-2"></div>
+                            <p class="text-gray-700"><strong>기간:</strong> 3박 4일 체류형 프로그램</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <div class="bg-gradient-to-br from-primary-blue/10 to-primary-green/10 rounded-3xl p-8">
+                        <h4 class="text-2xl font-bold text-gray-900 mb-4">핵심 콘셉트</h4>
+                        <div class="text-6xl text-center mb-4">4️⃣🌊</div>
+                        <h5 class="text-xl font-bold text-center text-gray-900 mb-6">4C 통합 체험</h5>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-primary-blue font-bold">Clean</div>
+                                <div class="text-sm text-gray-600">제로웨이스트</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-primary-green font-bold">Creative</div>
+                                <div class="text-sm text-gray-600">창의적 업무</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-primary-teal font-bold">Cool</div>
+                                <div class="text-sm text-gray-600">바다 힐링</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-secondary-orange font-bold">Connect</div>
+                                <div class="text-sm text-gray-600">인적 연결</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    ✨ <span class="text-gradient">핵심 특징</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">🌱</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">국내 최초 제로웨이스트</h3>
+                    <p class="text-gray-600 mb-4">측정 가능한 환경 효과로 70% 쓰레기 절감과 해양보호 실천 교육을 제공합니다.</p>
+                    <div class="bg-primary-green/10 rounded-xl p-3">
+                        <div class="text-primary-green font-bold">30톤</div>
+                        <div class="text-sm text-gray-600">연간 플라스틱 절감</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">2개 지역 연계 모델</h3>
+                    <p class="text-gray-600 mb-4">강릉(도시형) + 동해(자연형) 조합으로 다양한 워케이션 환경을 제공합니다.</p>
+                    <div class="bg-primary-blue/10 rounded-xl p-3">
+                        <div class="text-primary-blue font-bold">6억원</div>
+                        <div class="text-sm text-gray-600">연간 매출 목표</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">📱</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">MZ세대 맞춤 설계</h3>
+                    <p class="text-gray-600 mb-4">8개 인스타 포토존과 디지털 네이티브 친화적 환경을 제공합니다.</p>
+                    <div class="bg-secondary-purple/10 rounded-xl p-3">
+                        <div class="text-secondary-purple font-bold">95%</div>
+                        <div class="text-sm text-gray-600">타겟 적합성</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl mb-4">🏢</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">지역 상생 모델</h3>
+                    <p class="text-gray-600 mb-4">로컬 크리에이터 육성과 친환경 업체 네트워크를 구축합니다.</p>
+                    <div class="bg-primary-teal/10 rounded-xl p-3">
+                        <div class="text-primary-teal font-bold">20개</div>
+                        <div class="text-sm text-gray-600">청년 일자리 창출</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-4xl mb-4">🔬</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">기술 융합 혁신</h3>
+                    <p class="text-gray-600 mb-4">AR 환경교육, IoT 측정, AI 추천 시스템을 통합한 스마트 워케이션입니다.</p>
+                    <div class="bg-secondary-orange/10 rounded-xl p-3">
+                        <div class="text-secondary-orange font-bold">100%</div>
+                        <div class="text-sm text-gray-600">디지털 지원</div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="600">
+                    <div class="text-4xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">사회적 임팩트</h3>
+                    <p class="text-gray-600 mb-4">탄소중립 실천과 지역경제 기여를 통한 지속가능한 관광 모델입니다.</p>
+                    <div class="bg-primary-green/10 rounded-xl p-3">
+                        <div class="text-primary-green font-bold">4개</div>
+                        <div class="text-sm text-gray-600">SDGs 달성</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Overview -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    📅 <span class="text-gradient">3박 4일 프로그램</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    체계적이고 의미 있는 워케이션 여정
+                </p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Day 1 -->
+                <div class="bg-gradient-to-r from-primary-blue/10 to-transparent rounded-3xl p-8" data-aos="fade-right">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">1</div>
+                        <h3 class="text-2xl font-bold text-gray-900">강릉 정착 & 워케이션 준비</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">09:00-13:00</div>
+                            <div class="text-gray-900 font-medium">서울→강릉 이동 & 체크인</div>
+                            <div class="text-gray-600 text-sm">KTX 이용, 워크앤스테이 강릉</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">13:00-17:00</div>
+                            <div class="text-gray-900 font-medium">제로웨이스트 키트 & 워케이션</div>
+                            <div class="text-gray-600 text-sm">오션뷰에서 업무 체험</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">17:00-21:00</div>
+                            <div class="text-gray-900 font-medium">안목해변 & 중앙시장</div>
+                            <div class="text-gray-600 text-sm">커피거리 탐방, 로컬푸드</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="bg-gradient-to-r from-primary-green/10 to-transparent rounded-3xl p-8" data-aos="fade-left">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">2</div>
+                        <h3 class="text-2xl font-bold text-gray-900">동해 이동 & 해양 워케이션</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">07:00-11:30</div>
+                            <div class="text-gray-900 font-medium">일출 요가 & 동해 이동</div>
+                            <div class="text-gray-600 text-sm">호텔 루프탑, 한섬감성바닷길</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">12:00-17:30</div>
+                            <div class="text-gray-900 font-medium">해변 모바일 오피스</div>
+                            <div class="text-gray-600 text-sm">동해 펜션 워킹타임</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">17:30-21:00</div>
+                            <div class="text-gray-900 font-medium">쿠킹클래스 & 환경워크숍</div>
+                            <div class="text-gray-600 text-sm">제로웨이스트 요리, 해변 선셋</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="bg-gradient-to-r from-primary-teal/10 to-transparent rounded-3xl p-8" data-aos="fade-right">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">3</div>
+                        <h3 class="text-2xl font-bold text-gray-900">심화 체험 & 지역 상생</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">07:00-11:00</div>
+                            <div class="text-gray-900 font-medium">비치클린업 & 업사이클</div>
+                            <div class="text-gray-600 text-sm">봉사활동, 해양폐플라스틱 재활용</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">11:00-17:00</div>
+                            <div class="text-gray-900 font-medium">농장/어촌 방문 & 네트워킹</div>
+                            <div class="text-gray-600 text-sm">지역민 교류, 크리에이티브 세션</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">17:00-21:00</div>
+                            <div class="text-gray-900 font-medium">BTS 투어 & 완주 인증</div>
+                            <div class="text-gray-600 text-sm">주문진 버스정류장, 인증식</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="bg-gradient-to-r from-secondary-orange/10 to-transparent rounded-3xl p-8" data-aos="fade-left">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-secondary-orange rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">4</div>
+                        <h3 class="text-2xl font-bold text-gray-900">마무리 & 지속가능한 다짐</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">08:00-10:00</div>
+                            <div class="text-gray-900 font-medium">워케이션 회고 세션</div>
+                            <div class="text-gray-600 text-sm">경험 공유, 피드백</div>
+                        </div>
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">10:00-12:30</div>
+                            <div class="text-gray-900 font-medium">오죽한옥마을 & 성과정리</div>
+                            <div class="text-gray-600 text-sm">문화 탐방, 환경보호 성과</div>
+                        </div>
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">12:30-14:30</div>
+                            <div class="text-gray-900 font-medium">서울 복귀</div>
+                            <div class="text-gray-600 text-sm">KTX 이용</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI & Impact -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    📊 <span class="text-gradient">투자 수익률 & 사회적 임팩트</span>
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- ROI Chart -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg" data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">💰 재정 계획 & ROI</h3>
+                    <canvas id="roiChart" class="mb-6"></canvas>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="text-center p-4 bg-primary-blue/10 rounded-xl">
+                            <div class="text-2xl font-bold text-primary-blue">2억원</div>
+                            <div class="text-sm text-gray-600">초기 투자</div>
+                        </div>
+                        <div class="text-center p-4 bg-primary-green/10 rounded-xl">
+                            <div class="text-2xl font-bold text-primary-green">33%</div>
+                            <div class="text-sm text-gray-600">수익률</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Environmental Impact -->
+                <div class="bg-white rounded-3xl p-8 shadow-lg" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">🌱 환경 임팩트</h3>
+                    <canvas id="impactChart" class="mb-6"></canvas>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 bg-primary-green/10 rounded-xl">
+                            <span class="text-gray-700">플라스틱 절감</span>
+                            <span class="font-bold text-primary-green">30톤/년</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-primary-blue/10 rounded-xl">
+                            <span class="text-gray-700">CO2 감소</span>
+                            <span class="font-bold text-primary-blue">50톤/년</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-primary-teal/10 rounded-xl">
+                            <span class="text-gray-700">해양쓰레기 수거</span>
+                            <span class="font-bold text-primary-teal">5톤/년</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Metrics -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    🏆 <span class="text-gradient">성공 지표 & KPI</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <div class="text-center bg-gradient-to-br from-primary-blue/10 to-primary-blue/5 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">⭐</div>
+                    <div class="text-3xl font-bold text-primary-blue mb-2">4.5+</div>
+                    <div class="text-gray-700 font-medium">참가자 만족도</div>
+                    <div class="text-sm text-gray-500 mt-2">/5점 기준</div>
+                </div>
+
+                <div class="text-center bg-gradient-to-br from-primary-green/10 to-primary-green/5 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🔄</div>
+                    <div class="text-3xl font-bold text-primary-green mb-2">30%</div>
+                    <div class="text-gray-700 font-medium">재방문율</div>
+                    <div class="text-sm text-gray-500 mt-2">목표 달성률</div>
+                </div>
+
+                <div class="text-center bg-gradient-to-br from-primary-teal/10 to-primary-teal/5 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">📱</div>
+                    <div class="text-3xl font-bold text-primary-teal mb-2">1,000</div>
+                    <div class="text-gray-700 font-medium">SNS 언급</div>
+                    <div class="text-sm text-gray-500 mt-2">월간 목표</div>
+                </div>
+
+                <div class="text-center bg-gradient-to-br from-secondary-orange/10 to-secondary-orange/5 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl mb-4">♻️</div>
+                    <div class="text-3xl font-bold text-secondary-orange mb-2">70%</div>
+                    <div class="text-gray-700 font-medium">환경 절약</div>
+                    <div class="text-sm text-gray-500 mt-2">개인당 달성</div>
+                </div>
+
+                <div class="text-center bg-gradient-to-br from-secondary-purple/10 to-secondary-purple/5 rounded-3xl p-8" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-4xl mb-4">💰</div>
+                    <div class="text-3xl font-bold text-secondary-purple mb-2">6억</div>
+                    <div class="text-gray-700 font-medium">지역경제 기여</div>
+                    <div class="text-sm text-gray-500 mt-2">연간 매출</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Support System -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white dark-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+                    📱 <span class="text-gradient-light">디지털 지원 시스템</span>
+                </h2>
+                <p class="text-xl text-white/90 max-w-3xl mx-auto">
+                    스마트 기술로 완성하는 미래형 워케이션
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white/15 backdrop-blur-md rounded-3xl p-8 border border-white/30" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">📲</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">전용 앱/웹사이트</h3>
+                    <ul class="space-y-2 text-white/85">
+                        <li>• 실시간 예약 & 결제</li>
+                        <li>• 쓰레기 측정 기록</li>
+                        <li>• 포인트 적립 시스템</li>
+                        <li>• SNS 자동 연동</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/15 backdrop-blur-md rounded-3xl p-8 border border-white/30" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🤖</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">AI 기반 개인화</h3>
+                    <ul class="space-y-2 text-white/85">
+                        <li>• 맞춤형 일정 추천</li>
+                        <li>• 환경 목표 설정</li>
+                        <li>• 실시간 피드백</li>
+                        <li>• 성과 분석 리포트</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white/15 backdrop-blur-md rounded-3xl p-8 border border-white/30" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">🔗</div>
+                    <h3 class="text-xl font-bold mb-4 text-white">커뮤니티 플랫폼</h3>
+                    <ul class="space-y-2 text-white/85">
+                        <li>• 참가자 간 정보 공유</li>
+                        <li>• 환경 챌린지</li>
+                        <li>• 후기 & 평가</li>
+                        <li>• 지속적 네트워킹</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Hashtags -->
+            <div class="mt-16 text-center" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-6 text-white">권장 해시태그</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="bg-primary-blue/30 text-white px-4 py-2 rounded-full border border-primary-blue/50">#제로웨이스트워케이션</span>
+                    <span class="bg-primary-green/30 text-white px-4 py-2 rounded-full border border-primary-green/50">#강릉동해워케이션</span>
+                    <span class="bg-primary-teal/30 text-white px-4 py-2 rounded-full border border-primary-teal/50">#친환경여행</span>
+                    <span class="bg-secondary-orange/30 text-white px-4 py-2 rounded-full border border-secondary-orange/50">#바다에서일하기</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Download -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-primary-blue via-primary-teal to-primary-green rounded-3xl p-12 text-white text-center" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    📞 연락처 & 문의
+                </h2>
+                <p class="text-xl mb-8 opacity-90">
+                    제로웨이스트 바다 워케이션 루트에 대한 자세한 정보나 협업 문의를 환영합니다
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12 max-w-4xl mx-auto">
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6">
+                        <div class="text-3xl mb-4">📧</div>
+                        <h3 class="text-xl font-bold mb-2">이메일 문의</h3>
+                        <p class="opacity-90">zerowaste.workation@gmail.com</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6">
+                        <div class="text-3xl mb-4">📱</div>
+                        <h3 class="text-xl font-bold mb-2">전화 문의</h3>
+                        <p class="opacity-90">02-1234-5678</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="downloadPDF()" class="bg-white text-primary-blue px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+                        📄 PDF 제안서 다운로드
+                    </button>
+                    <button onclick="openContactForm()" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-blue transition-all">
+                        💬 협업 문의하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Modal -->
+    <div id="contactModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl p-8 max-w-lg w-full max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-gray-900">협업 문의</h3>
+                <button onclick="closeContactForm()" class="text-gray-500 hover:text-gray-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            
+            <form id="contactForm" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-2">이름 *</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">이메일 *</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="company" class="block text-sm font-medium text-gray-700 mb-2">회사/기관명</label>
+                    <input type="text" id="company" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue focus:border-transparent">
+                </div>
+                
+                <div>
+                    <label for="inquiry" class="block text-sm font-medium text-gray-700 mb-2">문의 유형 *</label>
+                    <select id="inquiry" name="inquiry" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue focus:border-transparent">
+                        <option value="">선택해주세요</option>
+                        <option value="partnership">파트너십 협업</option>
+                        <option value="investment">투자 문의</option>
+                        <option value="participation">프로그램 참여</option>
+                        <option value="media">언론/미디어</option>
+                        <option value="other">기타</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-2">문의 내용 *</label>
+                    <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-blue focus:border-transparent"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-primary-blue text-white py-3 rounded-xl font-bold hover:bg-primary-blue/90 transition-colors">
+                    문의 보내기
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-gradient-light mb-4">🌊 제로웨이스트 워케이션</div>
+                <p class="text-gray-400 mb-6">일하면서 지구도 살리는 새로운 여행 문화</p>
+                <div class="flex justify-center space-x-6 text-gray-400">
+                    <span>© 2025 제로웨이스트 바다 워케이션 루트</span>
+                    <span>•</span>
+                    <span>2025 강원특별자치도 해양 관광 콘텐츠 공모전</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // ROI Chart
+        const roiCtx = document.getElementById('roiChart').getContext('2d');
+        new Chart(roiCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['시설구축', '장비구매', '마케팅', '운영자금'],
+                datasets: [{
+                    data: [100, 50, 30, 20],
+                    backgroundColor: [
+                        '#0EA5E9',
+                        '#10B981',
+                        '#06B6D4',
+                        '#F59E0B'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+
+        // Impact Chart
+        const impactCtx = document.getElementById('impactChart').getContext('2d');
+        new Chart(impactCtx, {
+            type: 'bar',
+            data: {
+                labels: ['플라스틱\n절감', 'CO2\n감소', '해양쓰레기\n수거'],
+                datasets: [{
+                    data: [30, 50, 5],
+                    backgroundColor: [
+                        '#10B981',
+                        '#0EA5E9',
+                        '#06B6D4'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: '톤/년'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // PDF Download function
+        function downloadPDF() {
+            // Create a temporary link for PDF download
+            const link = document.createElement('a');
+            link.href = '#'; // 실제 PDF 파일 경로로 변경 필요
+            link.download = '제로웨이스트_바다_워케이션_루트_제안서.pdf';
+            
+            // Show download message
+            alert('PDF 제안서 다운로드가 준비되었습니다.\n\n실제 구현 시에는 PDF 파일 생성 기능이 추가됩니다.');
+            
+            // link.click(); // 실제 다운로드 실행
+        }
+
+        // Contact form functions
+        function openContactForm() {
+            document.getElementById('contactModal').classList.remove('hidden');
+            document.getElementById('contactModal').classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeContactForm() {
+            document.getElementById('contactModal').classList.add('hidden');
+            document.getElementById('contactModal').classList.remove('flex');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Show success message
+            alert('문의가 성공적으로 전송되었습니다!\n빠른 시일 내에 답변드리겠습니다.');
+            
+            // Reset form and close modal
+            this.reset();
+            closeContactForm();
+            
+            // 실제 구현 시에는 서버로 데이터 전송
+            console.log('Contact form data:', data);
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeContactForm();
+            }
+        });
+    </script>
+</body>
+</html>

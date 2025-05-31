@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파트너십 네트워크 | 제로웨이스트 바다 워케이션</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="micro-interactions.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient floating">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-primary-blue font-semibold">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-teal to-primary-green text-white pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    파트너십 네트워크 구축 계획
+                </h1>
+                <p class="text-xl md:text-2xl text-green-100 mb-8">
+                    1년 후 목표: 15개 파트너사와 함께하는 지역상생 생태계
+                </p>
+                
+                <!-- 현재 vs 목표 비교 -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number text-yellow-300" data-counter="3" data-suffix="개">3개</div>
+                        <p class="stat-label">현재 사전 협의 중</p>
+                    </div>
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-number text-yellow-300" data-counter="15" data-suffix="개">15개</div>
+                        <p class="stat-label">1년 후 목표</p>
+                    </div>
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="600">
+                        <div class="stat-number text-yellow-300" data-counter="6" data-suffix="개">6개</div>
+                        <p class="stat-label">연계 지역</p>
+                    </div>
+                </div>
+
+                <!-- 진행 상황 표시 -->
+                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6" data-aos="fade-up" data-aos-delay="800">
+                    <h3 class="text-xl font-bold mb-4">파트너십 구축 진행률</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                    <div class="flex justify-between text-sm mt-2">
+                        <span>시작</span>
+                        <span class="font-bold">현재 20%</span>
+                        <span>1년 후 완성</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 현재 상황 Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    🚀 현재 진행 상황 (2025년 5월 기준)
+                </h2>
+                <p class="text-xl text-gray-600">
+                    실제 진행 중인 파트너십 협의 현황
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 현재 협의 중인 파트너들 -->
+                <div class="partner-card card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="partner-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                        📋 협의 중
+                    </div>
+                    <div class="partner-icon icon-bounce text-4xl mb-4">☕</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">강릉 커피 농장</h3>
+                    <p class="text-gray-600 mb-4">커피박 업사이클링 프로그램 협력 방안 논의 중</p>
+                    <div class="partner-details">
+                        <div class="detail-item">
+                            <span class="detail-label">협의 시작:</span>
+                            <span class="detail-value">2025.04</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">예상 체결:</span>
+                            <span class="detail-value">2025.07</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="partner-card card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="partner-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                        📋 협의 중
+                    </div>
+                    <div class="partner-icon icon-pulse text-4xl mb-4">🏨</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">속초 친환경 숙박업체</h3>
+                    <p class="text-gray-600 mb-4">제로웨이스트 숙박 패키지 개발 논의</p>
+                    <div class="partner-details">
+                        <div class="detail-item">
+                            <span class="detail-label">협의 시작:</span>
+                            <span class="detail-value">2025.04</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">예상 체결:</span>
+                            <span class="detail-value">2025.08</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="partner-card card-hover" data-aos="fade-up" data-aos-delay="600">
+                    <div class="partner-status bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-semibold mb-4">
+                        📋 협의 중
+                    </div>
+                    <div class="partner-icon icon-spin text-4xl mb-4">🚗</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">전기차 렌탈 업체</h3>
+                    <p class="text-gray-600 mb-4">친환경 이동수단 제공 방안 검토</p>
+                    <div class="partner-details">
+                        <div class="detail-item">
+                            <span class="detail-label">협의 시작:</span>
+                            <span class="detail-value">2025.05</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">예상 체결:</span>
+                            <span class="detail-value">2025.09</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 로드맵 Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    📅 파트너십 구축 로드맵
+                </h2>
+                <p class="text-xl text-gray-600">
+                    체계적이고 단계적인 파트너십 확장 계획
+                </p>
+            </div>
+
+            <!-- 타임라인 -->
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-blue"></div>
+                
+                <div class="space-y-12">
+                    <!-- Phase 1: 현재 - 6개월 -->
+                    <div class="timeline-item card-hover flex items-center" data-aos="fade-right">
+                        <div class="w-1/2 pr-8 text-right">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Phase 1: 기반 구축</h3>
+                            <p class="text-gray-600 mb-4">현재 ~ 2025년 11월 (6개월)</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full inline-block">
+                                    ✅ 핵심 파트너 3개사 체결
+                                </div>
+                                <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full inline-block">
+                                    📋 시범 운영 프로그램 개발
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            1
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="partner-count">
+                                <span class="text-3xl font-bold text-primary-blue" data-counter="3" data-suffix="개">3개</span>
+                                <span class="text-gray-600">파트너사</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 2: 확장 -->
+                    <div class="timeline-item card-hover flex items-center" data-aos="fade-left">
+                        <div class="w-1/2 pr-8 text-right">
+                            <div class="partner-count">
+                                <span class="text-3xl font-bold text-primary-green" data-counter="8" data-suffix="개">8개</span>
+                                <span class="text-gray-600">파트너사</span>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            2
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Phase 2: 네트워크 확장</h3>
+                            <p class="text-gray-600 mb-4">2025년 12월 ~ 2026년 5월 (6개월)</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full inline-block">
+                                    🎯 지역별 대표 파트너 확보
+                                </div>
+                                <div class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full inline-block">
+                                    📱 플랫폼 베타 버전 출시
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phase 3: 완성 -->
+                    <div class="timeline-item card-hover flex items-center" data-aos="fade-right">
+                        <div class="w-1/2 pr-8 text-right">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-2">Phase 3: 생태계 완성</h3>
+                            <p class="text-gray-600 mb-4">2026년 6월 (목표 달성)</p>
+                            <div class="space-y-2 text-sm">
+                                <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full inline-block">
+                                    🎉 15개 파트너사 네트워크 완성
+                                </div>
+                                <div class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full inline-block">
+                                    🚀 정식 서비스 런칭
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 bg-secondary-orange rounded-full flex items-center justify-center text-white font-bold text-xl">
+                            3
+                        </div>
+                        <div class="w-1/2 pl-8">
+                            <div class="partner-count">
+                                <span class="text-3xl font-bold text-secondary-orange" data-counter="15" data-suffix="개">15개</span>
+                                <span class="text-gray-600">파트너사</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1년 후 목표 네트워크 Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    🎯 1년 후 목표 파트너십 네트워크
+                </h2>
+                <p class="text-xl text-gray-600">
+                    2026년 6월 완성 예정인 15개 파트너사 생태계
+                </p>
+                <div class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg inline-block">
+                    <p class="text-yellow-800 font-semibold">
+                        ⚠️ 아래 내용은 1년 후 달성 목표이며, 현재 구축 중인 계획입니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 지역별 파트너 분포 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">지역별 파트너 분포 (목표)</h3>
+                    <canvas id="partnerDistributionChart" class="chart-container"></canvas>
+                </div>
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">업종별 파트너 구성 (목표)</h3>
+                    <canvas id="partnerTypeChart" class="chart-container"></canvas>
+                </div>
+            </div>
+
+            <!-- 목표 파트너사 목록 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- 강릉권 파트너들 -->
+                <div class="region-section" data-aos="fade-up" data-aos-delay="200">
+                    <h4 class="text-xl font-bold text-primary-blue mb-4 flex items-center">
+                        <span class="mr-2">🏖️</span> 강릉권 (목표 5개사)
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                현재 협의 중
+                            </div>
+                            <h5 class="font-semibold">커피박 업사이클링 농장</h5>
+                            <p class="text-sm text-gray-600">친환경 워크샵 운영</p>
+                        </div>
+                        
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                목표 파트너
+                            </div>
+                            <h5 class="font-semibold">해변 친환경 카페</h5>
+                            <p class="text-sm text-gray-600">제로웨이스트 워크스페이스</p>
+                        </div>
+                        
+                        <div class="text-center text-gray-500 text-sm mt-4">
+                            + 3개 파트너 추가 예정
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 속초권 파트너들 -->
+                <div class="region-section" data-aos="fade-up" data-aos-delay="400">
+                    <h4 class="text-xl font-bold text-primary-green mb-4 flex items-center">
+                        <span class="mr-2">🏔️</span> 속초권 (목표 4개사)
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                현재 협의 중
+                            </div>
+                            <h5 class="font-semibold">친환경 펜션</h5>
+                            <p class="text-sm text-gray-600">제로웨이스트 숙박</p>
+                        </div>
+                        
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                목표 파트너
+                            </div>
+                            <h5 class="font-semibold">로컬 푸드 레스토랑</h5>
+                            <p class="text-sm text-gray-600">지역 식재료 활용</p>
+                        </div>
+                        
+                        <div class="text-center text-gray-500 text-sm mt-4">
+                            + 2개 파트너 추가 예정
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기타 지역 파트너들 -->
+                <div class="region-section" data-aos="fade-up" data-aos-delay="600">
+                    <h4 class="text-xl font-bold text-secondary-orange mb-4 flex items-center">
+                        <span class="mr-2">🌊</span> 기타 지역 (목표 6개사)
+                    </h4>
+                    
+                    <div class="space-y-4">
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                현재 협의 중
+                            </div>
+                            <h5 class="font-semibold">전기차 렌탈</h5>
+                            <p class="text-sm text-gray-600">친환경 이동수단</p>
+                        </div>
+                        
+                        <div class="partner-preview card-hover">
+                            <div class="partner-status bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-semibold mb-2">
+                                목표 파트너
+                            </div>
+                            <h5 class="font-semibold">해양 정화 단체</h5>
+                            <p class="text-sm text-gray-600">비치클린 프로그램</p>
+                        </div>
+                        
+                        <div class="text-center text-gray-500 text-sm mt-4">
+                            + 4개 파트너 추가 예정
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 실현 가능성 근거 Section -->
+    <section class="py-16 bg-primary-blue text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold mb-4">
+                    📊 파트너십 실현 가능성 근거
+                </h2>
+                <p class="text-xl text-blue-100">
+                    체계적인 분석과 구체적인 추진 계획
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="evidence-card card-hover" data-aos="fade-up" data-aos-delay="200">
+                    <div class="evidence-icon icon-bounce text-4xl mb-4">📈</div>
+                    <h3 class="text-xl font-bold mb-2">시장 수요 검증</h3>
+                    <p class="text-blue-100 mb-4">네이버 데이터랩 93점 A+ 등급으로 시장성 입증</p>
+                    <div class="evidence-stat">
+                        <span class="text-2xl font-bold text-yellow-300" data-counter="100" data-suffix="%">100%</span>
+                        <span class="text-sm">MZ세대 관심도</span>
+                    </div>
+                </div>
+
+                <div class="evidence-card card-hover" data-aos="fade-up" data-aos-delay="400">
+                    <div class="evidence-icon icon-pulse text-4xl mb-4">🤝</div>
+                    <h3 class="text-xl font-bold mb-2">사전 협의 진행</h3>
+                    <p class="text-blue-100 mb-4">이미 3개 업체와 구체적 협의 진행 중</p>
+                    <div class="evidence-stat">
+                        <span class="text-2xl font-bold text-yellow-300" data-counter="3" data-suffix="개">3개</span>
+                        <span class="text-sm">협의 중인 업체</span>
+                    </div>
+                </div>
+
+                <div class="evidence-card card-hover" data-aos="fade-up" data-aos-delay="600">
+                    <div class="evidence-icon icon-spin text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2">상생 수익 모델</h3>
+                    <p class="text-blue-100 mb-4">파트너사에게도 명확한 수익 구조 제공</p>
+                    <div class="evidence-stat">
+                        <span class="text-2xl font-bold text-yellow-300" data-counter="20" data-suffix="%">20%</span>
+                        <span class="text-sm">파트너 수익 분배</span>
+                    </div>
+                </div>
+
+                <div class="evidence-card card-hover" data-aos="fade-up" data-aos-delay="800">
+                    <div class="evidence-icon icon-bounce text-4xl mb-4">📋</div>
+                    <h3 class="text-xl font-bold mb-2">단계별 계획</h3>
+                    <p class="text-blue-100 mb-4">체계적인 3단계 파트너십 구축 로드맵</p>
+                    <div class="evidence-stat">
+                        <span class="text-2xl font-bold text-yellow-300" data-counter="12" data-suffix="개월">12개월</span>
+                        <span class="text-sm">목표 달성 기간</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">제로웨이스트 바다 워케이션</h3>
+                    <p class="text-gray-400">
+                        현실적이고 체계적인 파트너십으로 지역상생 생태계를 만들어갑니다.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">파트너십 현황</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>• 현재 협의 중: 3개사</li>
+                        <li>• 1년 후 목표: 15개사</li>
+                        <li>• 연계 지역: 6개</li>
+                        <li>• 진행률: 20%</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                    <p class="text-gray-400">
+                        파트너십 문의 환영<br>
+                        투명하고 상호 이익이 되는<br>
+                        협력 관계를 지향합니다.
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 제로웨이스트 바다 워케이션 루트. 강원특별자치도 해양관광 공모전 출품작.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="animations.js"></script>
+    <script src="enhanced-charts.js"></script>
+    <script src="scroll-animations.js"></script>
+    
+    <script>
+        // 차트 생성
+        function createPartnerDistributionChart() {
+            const ctx = document.getElementById('partnerDistributionChart');
+            if (!ctx) return;
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['강릉권', '속초권', '동해/삼척권', '양양/고성권'],
+                    datasets: [{
+                        data: [5, 4, 3, 3],
+                        backgroundColor: [
+                            '#0EA5E9',
+                            '#10B981', 
+                            '#F59E0B',
+                            '#8B5CF6'
+                        ],
+                        borderWidth: 3,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function createPartnerTypeChart() {
+            const ctx = document.getElementById('partnerTypeChart');
+            if (!ctx) return;
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['숙박', '식음료', '체험', '교통', '기타'],
+                    datasets: [{
+                        data: [4, 4, 3, 2, 2],
+                        backgroundColor: [
+                            '#0EA5E9',
+                            '#10B981',
+                            '#F59E0B', 
+                            '#8B5CF6',
+                            '#06B6D4'
+                        ],
+                        borderRadius: 8,
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 5
+                        }
+                    }
+                }
+            });
+        }
+
+        // 모바일 메뉴 토글
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 페이지 로드 시 초기화
+        window.addEventListener('load', function() {
+            createPartnerDistributionChart();
+            createPartnerTypeChart();
+        });
+    </script>
+</body>
+</html>

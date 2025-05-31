@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>종합 제안서 | 제로웨이스트 바다 워케이션 루트</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="micro-interactions.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .tech-badge {
+            @apply px-2 py-1 bg-primary-blue/10 text-primary-blue text-xs font-medium rounded-full;
+        }
+        
+        .comparison-item {
+            transition: all 0.3s ease;
+        }
+        
+        .comparison-item:hover {
+            transform: translateY(-2px);
+        }
+        
+        .innovation-card {
+            transition: all 0.3s ease;
+        }
+        
+        .innovation-card:hover {
+            transform: translateX(4px);
+        }
+        
+        .effect-card {
+            transition: all 0.3s ease;
+        }
+        
+        .effect-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .utilization-phase {
+            transition: all 0.3s ease;
+        }
+        
+        .evidence-item {
+            transition: all 0.3s ease;
+        }
+        
+        .evidence-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient floating">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-primary-blue font-semibold">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-primary-blue to-secondary-purple text-white pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                    📋 종합 제안서
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-100 mb-8">
+                    제로웨이스트 바다 워케이션 루트 - 완전한 프로젝트 개요
+                </p>
+                
+                <!-- 핵심 지표 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-number text-yellow-300" data-counter="93" data-suffix="점">93점</div>
+                        <p class="stat-label">A+ 등급</p>
+                    </div>
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-number text-yellow-300" data-counter="6" data-suffix="억원">6억원</div>
+                        <p class="stat-label">연 예상 매출</p>
+                    </div>
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="600">
+                        <div class="stat-number text-yellow-300" data-counter="15" data-suffix="개">15개</div>
+                        <p class="stat-label">파트너사 목표</p>
+                    </div>
+                    <div class="stat-item card-hover" data-aos="fade-up" data-aos-delay="800">
+                        <div class="stat-number text-yellow-300" data-counter="30" data-suffix="톤">30톤</div>
+                        <p class="stat-label">플라스틱 절감</p>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="1000">
+                    <button onclick="downloadPDF()" class="btn-primary px-8 py-3 text-lg">
+                        📄 PDF 다운로드
+                    </button>
+                    <button onclick="openContactForm()" class="btn-secondary px-8 py-3 text-lg border-2 border-white text-white hover:bg-white hover:text-primary-blue transition-colors">
+                        📞 문의하기
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로젝트 개요 -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    🎯 프로젝트 개요
+                </h2>
+                <p class="text-xl text-gray-600">
+                    일하면서 지구도 살리는 새로운 여행 문화
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 프로젝트 소개 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                        💡 아이디어 배경
+                    </h3>
+                    <div class="space-y-4 text-gray-600">
+                        <p>
+                            MZ세대의 <strong class="text-primary-blue">워라밸 추구</strong>와 <strong class="text-primary-green">환경보호 의식</strong>이 
+                            높아지면서, 기존 워케이션의 한계를 극복한 새로운 형태의 관광 콘텐츠가 필요합니다.
+                        </p>
+                        <p>
+                            강원 동해안의 아름다운 자연환경을 배경으로, <strong class="text-secondary-orange">IoT 기술</strong>과 
+                            <strong class="text-primary-teal">제로웨이스트 실천</strong>을 결합한 혁신적인 워케이션 프로그램을 제안합니다.
+                        </p>
+                        <p>
+                            개인의 환경 기여도를 실시간으로 측정하고 인증하여, 
+                            지속가능한 라이프스타일로의 변화를 이끌어내는 것이 핵심입니다.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 핵심 가치 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                        🌟 핵심 가치
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="value-item card-hover p-4 rounded-lg bg-primary-blue/5 border-l-4 border-primary-blue">
+                            <h4 class="font-bold text-primary-blue mb-2">🌱 환경 보호</h4>
+                            <p class="text-gray-600 text-sm">실질적인 플라스틱 절감과 해양 정화를 통한 지구 환경 개선</p>
+                        </div>
+                        <div class="value-item card-hover p-4 rounded-lg bg-primary-green/5 border-l-4 border-primary-green">
+                            <h4 class="font-bold text-primary-green mb-2">🤝 지역 상생</h4>
+                            <p class="text-gray-600 text-sm">15개 파트너사와 함께하는 지역경제 활성화 생태계</p>
+                        </div>
+                        <div class="value-item card-hover p-4 rounded-lg bg-secondary-orange/5 border-l-4 border-secondary-orange">
+                            <h4 class="font-bold text-secondary-orange mb-2">💻 스마트 워크</h4>
+                            <p class="text-gray-600 text-sm">AI 기반 개인 맞춤형 워크스페이스 최적화</p>
+                        </div>
+                        <div class="value-item card-hover p-4 rounded-lg bg-secondary-purple/5 border-l-4 border-secondary-purple">
+                            <h4 class="font-bold text-secondary-purple mb-2">📊 데이터 기반</h4>
+                            <p class="text-gray-600 text-sm">IoT 측정 시스템을 통한 객관적 환경 기여도 추적</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3박4일 코스 요약 -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    📅 3박4일 워케이션 코스
+                </h2>
+                <p class="text-xl text-gray-600">
+                    강릉-동해-속초를 연결하는 제로웨이스트 여정
+                </p>
+            </div>
+
+            <div class="space-y-8">
+                <!-- Day 1 -->
+                <div class="day-card card-hover bg-white rounded-2xl p-8 shadow-sm" data-aos="fade-up">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-blue rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">1</div>
+                        <h3 class="text-2xl font-bold text-gray-900">강릉 도착 & 환경 교육</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">09:00-12:00</div>
+                            <div class="text-gray-900 font-medium">체크인 & 오리엔테이션</div>
+                            <div class="text-gray-600 text-sm">제로웨이스트 키트 지급, IoT 시스템 설명</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">13:00-17:00</div>
+                            <div class="text-gray-900 font-medium">커피박 업사이클링 워크샵</div>
+                            <div class="text-gray-600 text-sm">강릉 커피 농장, 친환경 굿즈 제작</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-blue font-semibold mb-2">18:00-21:00</div>
+                            <div class="text-gray-900 font-medium">네트워킹 & 목표 설정</div>
+                            <div class="text-gray-600 text-sm">팀 빌딩, 개인 환경 목표 수립</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="day-card card-hover bg-white rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-green rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">2</div>
+                        <h3 class="text-2xl font-bold text-gray-900">동해 이동 & 해양 활동</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">07:00-11:30</div>
+                            <div class="text-gray-900 font-medium">일출 요가 & 동해 이동</div>
+                            <div class="text-gray-600 text-sm">호텔 루프탑, 한섬감성바닷길</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">12:00-17:30</div>
+                            <div class="text-gray-900 font-medium">해변 모바일 오피스</div>
+                            <div class="text-gray-600 text-sm">동해 펜션 워킹타임</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-green font-semibold mb-2">17:30-21:00</div>
+                            <div class="text-gray-900 font-medium">쿠킹클래스 & 환경워크숍</div>
+                            <div class="text-gray-600 text-sm">제로웨이스트 요리, 해변 선셋</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="day-card card-hover bg-white rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-teal rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">3</div>
+                        <h3 class="text-2xl font-bold text-gray-900">속초 심화 체험 & 지역 상생</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">07:00-11:00</div>
+                            <div class="text-gray-900 font-medium">비치클린업 & 업사이클</div>
+                            <div class="text-gray-600 text-sm">봉사활동, 해양폐플라스틱 재활용</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">11:00-17:00</div>
+                            <div class="text-gray-900 font-medium">농장/어촌 방문 & 네트워킹</div>
+                            <div class="text-gray-600 text-sm">지역민 교류, 크리에이티브 세션</div>
+                        </div>
+                        <div>
+                            <div class="text-primary-teal font-semibold mb-2">17:00-21:00</div>
+                            <div class="text-gray-900 font-medium">BTS 투어 & 완주 인증</div>
+                            <div class="text-gray-600 text-sm">주문진 버스정류장, 인증식</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="day-card card-hover bg-white rounded-2xl p-8 shadow-sm" data-aos="fade-up" data-aos-delay="600">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-secondary-orange rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">4</div>
+                        <h3 class="text-2xl font-bold text-gray-900">마무리 & 지속가능한 다짐</h3>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">09:00-12:00</div>
+                            <div class="text-gray-900 font-medium">성과 공유 & 발표</div>
+                            <div class="text-gray-600 text-sm">개인별 환경 기여도 발표</div>
+                        </div>
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">13:00-16:00</div>
+                            <div class="text-gray-900 font-medium">인증서 수여 & 네트워킹</div>
+                            <div class="text-gray-600 text-sm">제로웨이스트 실천 인증서</div>
+                        </div>
+                        <div>
+                            <div class="text-secondary-orange font-semibold mb-2">16:00-18:00</div>
+                            <div class="text-gray-900 font-medium">정리 & 귀가</div>
+                            <div class="text-gray-600 text-sm">체크아웃, 기념품 증정</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

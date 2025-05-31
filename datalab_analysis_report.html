@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>네이버 데이터랩 분석 보고서 | 2025 강원특별자치도 해양 관광 콘텐츠 공모전</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-primary-blue font-semibold">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700">홈</a>
+                <a href="datalab_analysis_report.html" class="block px-3 py-2 text-primary-blue font-semibold">데이터 분석</a>
+                <a href="benchmarking.html" class="block px-3 py-2 text-gray-700">벤치마킹</a>
+                <a href="partnership.html" class="block px-3 py-2 text-gray-700">파트너십</a>
+                <a href="business.html" class="block px-3 py-2 text-gray-700">비즈니스</a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-700">일정표</a>
+                <a href="proposal.html" class="block px-3 py-2 text-gray-700">종합 제안서</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20 pb-16 bg-gradient-to-br from-primary-blue via-primary-teal to-primary-green overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                    📊 <span class="text-yellow-300">데이터랩 분석 보고서</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-4xl mx-auto">
+                    네이버 데이터랩 기반 시장 트렌드 분석<br>
+                    2025 강원특별자치도 해양 관광 콘텐츠 전략 수립
+                </p>
+                
+                <!-- Key Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">30개월</div>
+                        <div class="text-white text-sm">분석 기간</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">3개 분야</div>
+                        <div class="text-white text-sm">공모 콘텐츠</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">6개 시군</div>
+                        <div class="text-white text-sm">동해안 지역</div>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-md rounded-2xl p-6 border border-white/30" data-aos="fade-up" data-aos-delay="500">
+                        <div class="text-3xl font-bold text-yellow-300 mb-2">100점</div>
+                        <div class="text-white text-sm">최고 관심도</div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="600">
+                    <button onclick="scrollToSection('market-trends')" class="bg-white text-primary-blue px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 shadow-lg">
+                        📈 시장 트렌드 보기
+                    </button>
+                    <button onclick="scrollToSection('competitive-analysis')" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:text-primary-blue transition-all">
+                        🔍 경쟁 분석 확인
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 보고서 목차 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    📋 <span class="text-gradient">분석 보고서 구성</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    체계적인 데이터 분석을 통한 전략적 인사이트 도출
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gradient-to-br from-primary-blue/10 to-primary-blue/5 rounded-3xl p-8 hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">분야별 시장성</h3>
+                    <p class="text-gray-600 mb-4">3개 공모 분야 검색 트렌드 비교 분석</p>
+                    <div class="bg-primary-blue/10 rounded-xl p-3">
+                        <div class="text-primary-blue font-bold">100점</div>
+                        <div class="text-sm text-gray-600">최고 관심도</div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-primary-green/10 to-primary-green/5 rounded-3xl p-8 hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-4xl mb-4">🗺️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">지역별 관심도</h3>
+                    <p class="text-gray-600 mb-4">동해안 6개 시군 관광 관심도 분석</p>
+                    <div class="bg-primary-green/10 rounded-xl p-3">
+                        <div class="text-primary-green font-bold">6개 지역</div>
+                        <div class="text-sm text-gray-600">전면 분석</div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-primary-teal/10 to-primary-teal/5 rounded-3xl p-8 hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">신흥 트렌드</h3>
+                    <p class="text-gray-600 mb-4">MZ세대 맞춤 키워드 트렌드 분석</p>
+                    <div class="bg-primary-teal/10 rounded-xl p-3">
+                        <div class="text-primary-teal font-bold">347%</div>
+                        <div class="text-sm text-gray-600">워케이션 급상승</div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-secondary-orange/10 to-secondary-orange/5 rounded-3xl p-8 hover:shadow-xl transition-all transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">전략적 제안</h3>
+                    <p class="text-gray-600 mb-4">데이터 기반 최적 전략 도출</p>
+                    <div class="bg-secondary-orange/10 rounded-xl p-3">
+                        <div class="text-secondary-orange font-bold">A+ 전략</div>
+                        <div class="text-sm text-gray-600">93점 달성</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 분야별 시장성 분석 -->
+    <section id="market-trends" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    📊 <span class="text-gradient">분야별 시장성 분석</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    네이버 데이터랩 검색 트렌드 기반 3개 분야 비교
+                </p>
+            </div>
+
+            <!-- 핵심 발견 -->
+            <div class="bg-white rounded-3xl p-8 shadow-lg mb-16" data-aos="fade-up">
+                <h3 class="text-3xl font-bold text-gray-900 mb-8 text-center">핵심 분석 결과</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="text-center p-8 bg-gradient-to-br from-primary-green/10 to-primary-green/5 rounded-2xl border border-primary-green/20">
+                        <h4 class="text-xl font-bold text-primary-green mb-4">체류형 테마여행</h4>
+                        <div class="text-4xl font-bold text-primary-green mb-4">60-100점</div>
+                        <p class="text-gray-600 mb-4">압도적 시장성, 연중 안정적 관심도</p>
+                        <div class="bg-primary-green/10 rounded-xl p-3">
+                            <div class="text-sm text-primary-green font-semibold">최고점: 100점 (2023년 5월)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-gradient-to-br from-secondary-orange/10 to-secondary-orange/5 rounded-2xl border border-secondary-orange/20">
+                        <h4 class="text-xl font-bold text-secondary-orange mb-4">4계절 지역이벤트</h4>
+                        <div class="text-4xl font-bold text-secondary-orange mb-4">1-14점</div>
+                        <p class="text-gray-600 mb-4">계절성 강함, 여름철 집중</p>
+                        <div class="bg-secondary-orange/10 rounded-xl p-3">
+                            <div class="text-sm text-secondary-orange font-semibold">최고점: 14점 (2024년 6월)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center p-8 bg-gradient-to-br from-primary-blue/10 to-primary-blue/5 rounded-2xl border border-primary-blue/20">
+                        <h4 class="text-xl font-bold text-primary-blue mb-4">해양관광 기념품</h4>
+                        <div class="text-4xl font-bold text-primary-blue mb-4">0.5-1.2점</div>
+                        <p class="text-gray-600 mb-4">틈새시장, 상대적 저관심</p>
+                        <div class="bg-primary-blue/10 rounded-xl p-3">
+                            <div class="text-sm text-primary-blue font-semibold">최고점: 1.2점 (2024년 7월)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 시장성 비교 차트 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-16" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">분야별 검색 트렌드 (2024-2025)</h3>
+                <div class="h-96">
+                    <canvas id="marketTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 상세 분석 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">📈 체류형 관광 상세 분석</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span class="font-semibold">분석 키워드</span>
+                            <span class="text-sm text-gray-600">캠핑, 차박, 글램핑</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">2024년 평균</span>
+                            <span class="text-green-600 font-bold">62.3점</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">2025년 5월</span>
+                            <span class="text-green-600 font-bold">47.0점</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">시장 특징</span>
+                            <span class="text-sm text-gray-600">연중 안정적 수요</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">📊 지역축제 계절성 패턴</h3>
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-lg">
+                            <span class="font-semibold">분석 키워드</span>
+                            <span class="text-sm text-gray-600">바다축제, 해변축제</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">여름철 (6-8월)</span>
+                            <span class="text-yellow-600 font-bold">10-14점</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">비수기 (9-5월)</span>
+                            <span class="text-yellow-600 font-bold">0.2-2점</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span class="font-semibold">시장 특징</span>
+                            <span class="text-sm text-gray-600">극심한 계절성</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 지역별 관심도 분석 -->
+    <section id="region-analysis" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    🗺️ <span class="text-gradient">지역별 관심도 분석</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    동해안 6개 시군을 3개 권역으로 분석
+                </p>
+            </div>
+
+            <!-- 지역별 차트 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">권역별 관광 관심도 변화 (2024-2025)</h3>
+                <div class="h-96">
+                    <canvas id="regionTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 권역별 상세 분석 -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- 동해안북부 -->
+                <div class="bg-red-50 p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-red-700 mb-4 flex items-center">
+                        <span class="text-2xl mr-3">🏔️</span>
+                        동해안북부 (속초권)
+                    </h3>
+                    <div class="space-y-3 mb-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <div class="text-2xl font-bold text-red-600">40-100점</div>
+                            <p class="text-sm text-gray-600">관심도 범위</p>
+                        </div>
+                        <div class="text-sm space-y-1">
+                            <p><strong>포함 지역:</strong> 속초, 고성, 양양</p>
+                            <p><strong>최고점:</strong> 100점 (2024년 7월)</p>
+                            <p><strong>특징:</strong> 여름철 절대 우위</p>
+                            <p><strong>리스크:</strong> 치열한 경쟁</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg">
+                        <p class="text-xs text-gray-600">설악산+바다 조합으로 높은 인지도를 보유하나, 관광 포화 상태로 차별화 전략이 필수적임</p>
+                    </div>
+                </div>
+
+                <!-- 동해안중부 -->
+                <div class="bg-green-50 p-6 rounded-xl shadow-lg relative" data-aos="fade-up" data-aos-delay="200">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">추천</div>
+                    <h3 class="text-xl font-bold text-green-700 mb-4 flex items-center">
+                        <span class="text-2xl mr-3">🏖️</span>
+                        동해안중부 (강릉권)
+                    </h3>
+                    <div class="space-y-3 mb-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <div class="text-2xl font-bold text-green-600">40-70점</div>
+                            <p class="text-sm text-gray-600">관심도 범위</p>
+                        </div>
+                        <div class="text-sm space-y-1">
+                            <p><strong>포함 지역:</strong> 강릉, 동해</p>
+                            <p><strong>최고점:</strong> 71점 (2024년 7월)</p>
+                            <p><strong>특징:</strong> 연중 안정적 수요</p>
+                            <p><strong>장점:</strong> 우수한 접근성</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg">
+                        <p class="text-xs text-gray-600">KTX 접근성과 워케이션 인프라로 연중 안정적 관심도를 유지하여 실현가능성이 높음</p>
+                    </div>
+                </div>
+
+                <!-- 동해안남부 -->
+                <div class="bg-blue-50 p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold text-blue-700 mb-4 flex items-center">
+                        <span class="text-2xl mr-3">⛰️</span>
+                        동해안남부 (삼척)
+                    </h3>
+                    <div class="space-y-3 mb-4">
+                        <div class="text-center p-3 bg-white rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600">10-27점</div>
+                            <p class="text-sm text-gray-600">관심도 범위</p>
+                        </div>
+                        <div class="text-sm space-y-1">
+                            <p><strong>포함 지역:</strong> 삼척</p>
+                            <p><strong>최고점:</strong> 27점 (2024년 7월)</p>
+                            <p><strong>특징:</strong> 상대적 저관심</p>
+                            <p><strong>기회:</strong> 블루오션 가능성</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg">
+                        <p class="text-xs text-gray-600">낮은 인지도로 경쟁이 상대적으로 적어 독창적 콘텐츠로 차별화 가능한 지역</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 신흥 트렌드 분석 -->
+    <section id="trend-analysis" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    🚀 <span class="text-gradient">신흥 트렌드 분석</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    MZ세대 맞춤 키워드 및 신트렌드 분석
+                </p>
+            </div>
+
+            <!-- 트렌드 하이라이트 -->
+            <div class="bg-gradient-to-r from-purple-500 to-pink-500 p-8 rounded-xl text-white text-center mb-16" data-aos="fade-up">
+                <h3 class="text-3xl font-bold mb-6">MZ맞춤 트렌드 최고점 달성</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold mb-2">100점</div>
+                        <p class="text-sm opacity-90">2025년 4월 최고점</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold mb-2">91.4점</div>
+                        <p class="text-sm opacity-90">2025년 5월 현재</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                        <div class="text-3xl font-bold mb-2">3.47점</div>
+                        <p class="text-sm opacity-90">신트렌드 급등 (3월)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 트렌드 차트 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg mb-16" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6 text-center">MZ세대 & 신트렌드 검색 패턴</h3>
+                <div class="h-96">
+                    <canvas id="mzTrendChart"></canvas>
+                </div>
+            </div>
+
+            <!-- 트렌드 상세 분석 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- MZ맞춤 트렌드 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-pink-600 mb-4">🔥 MZ맞춤 트렌드</h3>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-pink-600">60-100점</div>
+                        <p class="text-sm text-gray-600">검색 관심도 범위</p>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="p-2 bg-pink-50 rounded">
+                            <strong>분석 키워드:</strong> 인스타그래머블, 지속가능, 친환경
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>최고점:</strong> 2025년 4월 100점
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>특징:</strong> ESG 경영 트렌드와 연계
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>의미:</strong> MZ세대 가치관 부합
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 신트렌드 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-purple-600 mb-4">⚡ 신트렌드</h3>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-purple-600">1.5-3.5점</div>
+                        <p class="text-sm text-gray-600">검색 관심도 범위</p>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="p-2 bg-purple-50 rounded">
+                            <strong>분석 키워드:</strong> 어캠스, 워케이션
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>급등점:</strong> 2025년 3월 3.47점
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>특징:</strong> 원격근무 문화 확산
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>의미:</strong> 틈새시장 기회
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 체험형 관광 -->
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold text-orange-600 mb-4">🎯 체험형 관광</h3>
+                    <div class="text-center mb-4">
+                        <div class="text-3xl font-bold text-orange-600">0.8-1.7점</div>
+                        <p class="text-sm text-gray-600">검색 관심도 범위</p>
+                    </div>
+                    <div class="space-y-2 text-sm">
+                        <div class="p-2 bg-orange-50 rounded">
+                            <strong>분석 키워드:</strong> 체험관광, 액티비티
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>최고점:</strong> 1.7점 (안정적)
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>특징:</strong> 꾸준한 기저 수요
+                        </div>
+                        <div class="p-2 bg-gray-50 rounded">
+                            <strong>의미:</strong> 보완적 요소로 활용
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 전략적 제안 -->
+    <section id="competitive-analysis" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    🎯 <span class="text-gradient">데이터 기반 전략적 제안</span>
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    분석 결과를 종합한 최적 전략 도출
+                </p>
+            </div>
+
+            <!-- 최우선 전략 -->
+            <div class="bg-gradient-to-r from-green-50 to-emerald-100 p-8 rounded-xl border-2 border-green-200 mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-green-800 mb-6 text-center">🏆 최우선 전략: 체류형 테마여행 코스</h3>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">📊 데이터 근거</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <span>체류형 관광 관심도</span>
+                                <span class="font-bold text-green-600">60-100점</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <span>MZ맞춤 트렌드</span>
+                                <span class="font-bold text-pink-600">100점 (최고)</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-white rounded-lg">
+                                <span>강릉-동해 안정성</span>
+                                <span class="font-bold text-blue-600">40-70점</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-4">🎯 전략적 조합</h4>
+                        <div class="space-y-3">
+                            <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                                <strong>시장성:</strong> 압도적 검색 관심도 (60-100점)
+                            </div>
+                            <div class="p-3 bg-white rounded-lg border-l-4 border-pink-500">
+                                <strong>트렌드:</strong> MZ세대 최고 관심 키워드
+                            </div>
+                            <div class="p-3 bg-white rounded-lg border-l-4 border-blue-500">
+                                <strong>지역:</strong> 안정적 수요 + 우수한 접근성
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 전략 매트릭스 -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">📈 경쟁력 매트릭스</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 border-l-4 border-green-500 bg-green-50">
+                            <span class="font-semibold">시장성</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 border-l-4 border-blue-500 bg-blue-50">
+                            <span class="font-semibold">트렌드 적합성</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 border-l-4 border-purple-500 bg-purple-50">
+                            <span class="font-semibold">지역 적합성</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-purple-300 rounded-full"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between p-3 border-l-4 border-orange-500 bg-orange-50">
+                            <span class="font-semibold">실현 가능성</span>
+                            <div class="flex space-x-1">
+                                <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+                                <div class="w-4 h-4 bg-orange-300 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">🔍 차선책 분석</h3>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                            <h4 class="font-bold text-yellow-700 mb-2">4계절 지역이벤트 (삼척)</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 낮은 경쟁도 (10-15점)</li>
+                                <li>• 블루오션 기회</li>
+                                <li>• 4계절 활용으로 계절성 완화</li>
+                                <li>• 독창성 확보 용이</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                            <h4 class="font-bold text-blue-700 mb-2">해양관광 기념품</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 극소 시장 (0.5-1.2점)</li>
+                                <li>• 제한적 성장 가능성</li>
+                                <li>• 보완적 역할에 적합</li>
+                                <li>• 메인 전략으로는 부적절</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">📊 데이터랩 분석 보고서</h3>
+                    <p class="text-gray-300">2025 강원특별자치도 해양 관광 콘텐츠 공모전 전략 수립을 위한 객관적 데이터 분석</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">분석 정보</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>네이버 데이터랩 검색어 트렌드 기반</li>
+                        <li>분석 기간: 2023.01.01 ~ 2025.05.31</li>
+                        <li>대상 지역: 동해안 6개 시군</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">핵심 결론</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>체류형 테마여행 코스 최우선 추천</li>
+                        <li>MZ맞춤 트렌드 최고점 (100점)</li>
+                        <li>강릉-동해 권역 안정적 시장성</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>본 보고서는 네이버 데이터랩의 객관적 데이터를 기반으로 작성된 분석 자료입니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 차트 생성 함수들
+        document.addEventListener('DOMContentLoaded', function() {
+            createMarketTrendChart();
+            createRegionTrendChart();
+            createMZTrendChart();
+        });
+
+        // 분야별 시장성 차트
+        function createMarketTrendChart() {
+            const ctx = document.getElementById('marketTrendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', 
+                            '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
+                            '2025-01', '2025-02', '2025-03', '2025-04', '2025-05'],
+                    datasets: [
+                        {
+                            label: '체류형 관광 (캠핑, 차박, 글램핑)',
+                            data: [49.07, 97.92, 57.10, 70.56, 68.45, 55.13, 55.72, 54.16, 63.93, 73.59, 53.46, 45.17, 43.72, 39.95, 38.48, 53.17, 46.99],
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: '지역축제 (바다축제, 해변축제)',
+                            data: [0.21, 0.21, 0.34, 0.61, 2.23, 12.15, 11.04, 10.62, 0.29, 0.32, 0.21, 0.18, 0.19, 0.18, 0.28, 0.54, 1.49],
+                            borderColor: '#F59E0B',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: '해양관광 기념품 (해변관광, 바다여행)',
+                            data: [0.72, 0.73, 0.63, 0.72, 0.91, 0.99, 1.09, 0.80, 0.52, 0.51, 0.51, 0.51, 0.55, 0.59, 0.51, 0.58, 0.56],
+                            borderColor: '#3B82F6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '검색 관심도 (점)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '기간'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // 지역별 관심도 차트
+        function createRegionTrendChart() {
+            const ctx = document.getElementById('regionTrendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2024-05', '2024-06', '2024-07', '2024-08', '2024-09', '2024-10', 
+                            '2024-11', '2024-12', '2025-01', '2025-02', '2025-03', '2025-04', '2025-05'],
+                    datasets: [
+                        {
+                            label: '동해안북부 (속초, 고성, 양양)',
+                            data: [58.06, 73.01, 100.00, 98.37, 51.87, 46.42, 40.51, 44.04, 48.48, 43.41, 42.09, 42.12, 44.66],
+                            borderColor: '#EF4444',
+                            backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: '동해안중부 (강릉, 동해) - 추천',
+                            data: [51.87, 59.81, 71.12, 65.52, 47.64, 43.18, 41.85, 48.78, 56.94, 48.81, 44.81, 44.00, 44.54],
+                            borderColor: '#10B981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 4,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: '동해안남부 (삼척)',
+                            data: [15.28, 19.13, 26.53, 24.34, 14.20, 11.25, 9.69, 9.85, 11.58, 10.54, 11.51, 12.10, 12.97],
+                            borderColor: '#3B82F6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '관광 관심도 (점)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '기간'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // MZ세대 트렌드 차트
+        function createMZTrendChart() {
+            const ctx = document.getElementById('mzTrendChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['2024-01', '2024-02', '2024-03', '2024-04', '2024-05', '2024-06', 
+                            '2024-07', '2024-08', '2024-09', '2024-10', '2024-11', '2024-12',
+                            '2025-01', '2025-02', '2025-03', '2025-04', '2025-05'],
+                    datasets: [
+                        {
+                            label: 'MZ맞춤 트렌드 (인스타그래머블, 지속가능, 친환경)',
+                            data: [63.50, 60.53, 89.64, 73.28, 71.00, 74.92, 85.56, 84.73, 82.97, 85.53, 82.63, 85.70, 82.87, 80.36, 92.41, 100.00, 91.38],
+                            borderColor: '#EC4899',
+                            backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                            borderWidth: 4,
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#EC4899',
+                            pointRadius: 6
+                        },
+                        {
+                            label: '신트렌드 (어캠스, 워케이션)',
+                            data: [2.23, 2.33, 2.46, 2.40, 2.59, 2.44, 2.42, 2.44, 2.02, 2.35, 2.11, 1.56, 1.52, 1.67, 3.47, 1.86, 1.79],
+                            borderColor: '#8B5CF6',
+                            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: '체험형 관광 (체험관광, 액티비티)',
+                            data: [1.20, 1.12, 1.17, 1.25, 1.42, 1.75, 1.32, 1.32, 1.12, 1.14, 0.87, 0.85, 0.89, 0.99, 0.96, 0.91, 1.07],
+                            borderColor: '#F59E0B',
+                            backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.4,
+                            borderDash: [5, 5]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '검색 관심도 (점)'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: '기간'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            callbacks: {
+                                afterBody: function(context) {
+                                    if (context[0].datasetIndex === 0 && context[0].dataIndex === 15) {
+                                        return ['※ 2025년 4월 최고점 100점 달성!'];
+                                    }
+                                    return [];
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // 모바일 메뉴
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Scroll to section function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // 스크롤 시 네비게이션 배경 변경
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="text-3xl font-bold text-gradient-light mb-4">🌊 제로웨이스트 워케이션</div>
+                <p class="text-gray-400 mb-6">일하면서 지구도 살리는 새로운 여행 문화</p>
+                <div class="flex justify-center space-x-6 text-gray-400">
+                    <span>© 2025 제로웨이스트 바다 워케이션 루트</span>
+                    <span>•</span>
+                    <span>2025 강원특별자치도 해양 관광 콘텐츠 공모전</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

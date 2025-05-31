@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파트너십 네트워크 | 제로웨이스트 바다 워케이션</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full nav-glass shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-primary-blue font-semibold">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-gray-700 hover:text-primary-blue transition-colors">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-[60vh] flex items-center relative overflow-hidden mt-16">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    🤝 <span class="text-yellow-300">파트너십</span> 네트워크
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    15개 업체 상생 네트워크로 실현가능성 100% 보장
+                </p>
+                
+                <!-- 핵심 지표 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-yellow-300">15개</div>
+                        <p class="text-sm opacity-80">파트너 업체</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-yellow-300">20개</div>
+                        <p class="text-sm opacity-80">창출 일자리</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-3xl font-bold text-yellow-300">2억원</div>
+                        <p class="text-sm opacity-80">지역 기여 매출</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="800">
+                        <div class="text-3xl font-bold text-yellow-300">100%</div>
+                        <p class="text-sm opacity-80">계약 성사율</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 파트너십 맵 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🗺️ 파트너십 생태계</h2>
+                <p class="text-xl text-gray-600">강릉-동해 연계 완벽 네트워크</p>
+            </div>
+
+            <!-- 인터랙티브 맵 -->
+            <div class="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl mb-16" data-aos="fade-up">
+                <div class="relative">
+                    <!-- 지역 구분 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- 강릉 지역 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-bold text-blue-600 mb-6 flex items-center">
+                                <span class="text-3xl mr-3">🏖️</span>
+                                강릉 지역 (8개소)
+                            </h3>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- 워크앤스테이 강릉 -->
+                                <div class="border-2 border-blue-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('workstay')">
+                                    <div class="text-2xl mb-2">🏨</div>
+                                    <h4 class="font-semibold text-gray-900">워크앤스테이 강릉</h4>
+                                    <p class="text-sm text-gray-600">프리미엄 워케이션 공간</p>
+                                    <div class="mt-2 text-xs text-blue-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 스테이포유 -->
+                                <div class="border-2 border-green-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('stayforyou')">
+                                    <div class="text-2xl mb-2">🏠</div>
+                                    <h4 class="font-semibold text-gray-900">스테이포유</h4>
+                                    <p class="text-sm text-gray-600">한옥 워케이션 체험</p>
+                                    <div class="mt-2 text-xs text-green-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 안목해변 카페거리 -->
+                                <div class="border-2 border-orange-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('anmok')">
+                                    <div class="text-2xl mb-2">☕</div>
+                                    <h4 class="font-semibold text-gray-900">안목해변 카페거리</h4>
+                                    <p class="text-sm text-gray-600">커피와 워케이션</p>
+                                    <div class="mt-2 text-xs text-orange-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 경포해변 상권 -->
+                                <div class="border-2 border-purple-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('gyeongpo')">
+                                    <div class="text-2xl mb-2">🌊</div>
+                                    <h4 class="font-semibold text-gray-900">경포해변 상권</h4>
+                                    <p class="text-sm text-gray-600">레저 & 액티비티</p>
+                                    <div class="mt-2 text-xs text-purple-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 기타 4개소 -->
+                                <div class="col-span-2 bg-gray-50 p-4 rounded-lg text-center">
+                                    <p class="text-gray-600">기타 로컬 음식점, 체험공방, 관광택시 등 4개소</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 동해 지역 -->
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h3 class="text-2xl font-bold text-teal-600 mb-6 flex items-center">
+                                <span class="text-3xl mr-3">⛰️</span>
+                                동해 지역 (7개소)
+                            </h3>
+                            
+                            <div class="grid grid-cols-2 gap-4">
+                                <!-- 더웨이브컴퍼니 -->
+                                <div class="border-2 border-teal-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('wavecompany')">
+                                    <div class="text-2xl mb-2">🌊</div>
+                                    <h4 class="font-semibold text-gray-900">더웨이브컴퍼니</h4>
+                                    <p class="text-sm text-gray-600">프로그램 운영 전문</p>
+                                    <div class="mt-2 text-xs text-teal-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 한섬감성바닷길 -->
+                                <div class="border-2 border-blue-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('hanseom')">
+                                    <div class="text-2xl mb-2">🚶</div>
+                                    <h4 class="font-semibold text-gray-900">한섬감성바닷길</h4>
+                                    <p class="text-sm text-gray-600">해변 모바일 오피스</p>
+                                    <div class="mt-2 text-xs text-blue-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 쏠비치 호텔&리조트 -->
+                                <div class="border-2 border-green-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('solbeach')">
+                                    <div class="text-2xl mb-2">🏖️</div>
+                                    <h4 class="font-semibold text-gray-900">쏠비치 호텔&리조트</h4>
+                                    <p class="text-sm text-gray-600">프리미엄 숙박</p>
+                                    <div class="mt-2 text-xs text-green-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 동해 어촌체험마을 -->
+                                <div class="border-2 border-orange-200 p-4 rounded-lg hover:shadow-md transition-all cursor-pointer" onclick="showPartnerDetail('fishing')">
+                                    <div class="text-2xl mb-2">🐟</div>
+                                    <h4 class="font-semibold text-gray-900">동해 어촌체험마을</h4>
+                                    <p class="text-sm text-gray-600">지역 상생 체험</p>
+                                    <div class="mt-2 text-xs text-orange-600">클릭하여 상세보기</div>
+                                </div>
+
+                                <!-- 기타 3개소 -->
+                                <div class="col-span-2 bg-gray-50 p-4 rounded-lg text-center">
+                                    <p class="text-gray-600">기타 해양 레저업체, 친환경 농장, 업사이클 공방 등 3개소</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 연결선 표시 (CSS로 구현) -->
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden md:block">
+                        <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-teal-500"></div>
+                        <div class="absolute -top-2 -left-2 w-5 h-5 bg-blue-500 rounded-full"></div>
+                        <div class="absolute -top-2 -right-2 w-5 h-5 bg-teal-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 파트너 카테고리별 분석 -->
+    <section class="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">📊 파트너 카테고리별 분석</h2>
+                <p class="text-xl text-gray-600">체계적인 업종별 협력 구조</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 숙박업 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">🏨</div>
+                        <h3 class="text-2xl font-bold text-gray-900">숙박업</h3>
+                        <p class="text-gray-600">4개소</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                            <span class="font-semibold">워크앤스테이</span>
+                            <span class="text-blue-600">메인</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>스테이포유</span>
+                            <span class="text-gray-600">한옥</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>쏠비치 리조트</span>
+                            <span class="text-gray-600">고급</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>게스트하우스</span>
+                            <span class="text-gray-600">경제형</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600">30%</div>
+                            <p class="text-sm text-blue-600">수수료율</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 체험업 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">🎯</div>
+                        <h3 class="text-2xl font-bold text-gray-900">체험업</h3>
+                        <p class="text-gray-600">5개소</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                            <span class="font-semibold">더웨이브컴퍼니</span>
+                            <span class="text-green-600">메인</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>어촌체험마을</span>
+                            <span class="text-gray-600">전통</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>업사이클 공방</span>
+                            <span class="text-gray-600">친환경</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>해양레저</span>
+                            <span class="text-gray-600">액티비티</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>친환경농장</span>
+                            <span class="text-gray-600">농업</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-green-600">40%</div>
+                            <p class="text-sm text-green-600">수수료율</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 상품업 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">🛒</div>
+                        <h3 class="text-2xl font-bold text-gray-900">상품업</h3>
+                        <p class="text-gray-600">3개소</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                            <span class="font-semibold">퀸비스토어</span>
+                            <span class="text-purple-600">메인</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>알맹상점</span>
+                            <span class="text-gray-600">제로웨이스트</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>로컬푸드</span>
+                            <span class="text-gray-600">지역특산</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-purple-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-purple-600">20%</div>
+                            <p class="text-sm text-purple-600">수수료율</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 교통업 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="400">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">🚗</div>
+                        <h3 class="text-2xl font-bold text-gray-900">교통업</h3>
+                        <p class="text-gray-600">2개소</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                            <span class="font-semibold">강원도 관광택시</span>
+                            <span class="text-orange-600">메인</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                            <span>전기차 렌트</span>
+                            <span class="text-gray-600">친환경</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-orange-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-orange-600">15%</div>
+                            <p class="text-sm text-orange-600">수수료율</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 기술업 -->
+                <div class="card-hover bg-white p-6 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="500">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-teal-500 rounded-full flex items-center justify-center text-white text-3xl mx-auto mb-4">💻</div>
+                        <h3 class="text-2xl font-bold text-gray-900">기술업</h3>
+                        <p class="text-gray-600">1개소</p>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center p-3 bg-teal-50 rounded-lg">
+                            <span class="font-semibold">로컬 IT업체</span>
+                            <span class="text-teal-600">메인</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 p-4 bg-teal-50 rounded-lg">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-teal-600">고정비</div>
+                            <p class="text-sm text-teal-600">개발/유지보수</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 상생 매출 구조 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">💰 상생 매출 구조</h2>
+                <p class="text-xl text-gray-600">15개 파트너 모두가 성장하는 수익 모델</p>
+            </div>
+
+            <!-- 매출 흐름도 -->
+            <div class="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl mb-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">📊 연간 매출 흐름 (6억원 기준)</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 총매출 -->
+                    <div class="text-center">
+                        <div class="bg-blue-500 text-white p-6 rounded-xl mb-4">
+                            <h4 class="text-lg font-bold mb-2">총 매출</h4>
+                            <div class="text-3xl font-bold">6억원</div>
+                        </div>
+                        <p class="text-sm text-gray-600">워케이션 패키지 전체 매출</p>
+                    </div>
+
+                    <!-- 파트너 분배 -->
+                    <div class="text-center">
+                        <div class="bg-green-500 text-white p-6 rounded-xl mb-4">
+                            <h4 class="text-lg font-bold mb-2">파트너 분배</h4>
+                            <div class="text-3xl font-bold">4억원</div>
+                            <div class="text-sm opacity-80">(67%)</div>
+                        </div>
+                        <p class="text-sm text-gray-600">지역 업체 직접 수익</p>
+                    </div>
+
+                    <!-- 운영 수익 -->
+                    <div class="text-center">
+                        <div class="bg-purple-500 text-white p-6 rounded-xl mb-4">
+                            <h4 class="text-lg font-bold mb-2">운영 수익</h4>
+                            <div class="text-3xl font-bold">2억원</div>
+                            <div class="text-sm opacity-80">(33%)</div>
+                        </div>
+                        <p class="text-sm text-gray-600">플랫폼 운영 및 재투자</p>
+                    </div>
+                </div>
+
+                <!-- 세부 분배 -->
+                <div class="mt-12">
+                    <canvas id="revenueDistributionChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- 파트너별 예상 수익 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">🏨 주요 파트너 예상 수익</h3>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center p-3 border-l-4 border-blue-500 bg-blue-50">
+                            <span class="font-semibold">워크앤스테이 강릉</span>
+                            <span class="text-lg font-bold text-blue-600">8,000만원</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-l-4 border-green-500 bg-green-50">
+                            <span class="font-semibold">더웨이브컴퍼니</span>
+                            <span class="text-lg font-bold text-green-600">6,000만원</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-l-4 border-purple-500 bg-purple-50">
+                            <span class="font-semibold">쏠비치 리조트</span>
+                            <span class="text-lg font-bold text-purple-600">4,000만원</span>
+                        </div>
+                        <div class="flex justify-between items-center p-3 border-l-4 border-orange-500 bg-orange-50">
+                            <span class="font-semibold">관광택시</span>
+                            <span class="text-lg font-bold text-orange-600">2,000만원</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-gray-900 mb-6">📈 지역 경제 효과</h3>
+                    <div class="space-y-4">
+                        <div class="text-center p-4 bg-blue-50 rounded-lg">
+                            <div class="text-2xl font-bold text-blue-600">20개</div>
+                            <p class="text-sm text-gray-600">직간접 일자리 창출</p>
+                        </div>
+                        <div class="text-center p-4 bg-green-50 rounded-lg">
+                            <div class="text-2xl font-bold text-green-600">2억원</div>
+                            <p class="text-sm text-gray-600">지역 경제 기여</p>
+                        </div>
+                        <div class="text-center p-4 bg-purple-50 rounded-lg">
+                            <div class="text-2xl font-bold text-purple-600">30%</div>
+                            <p class="text-sm text-gray-600">지역업체 매출 증가</p>
+                        </div>
+                        <div class="text-center p-4 bg-orange-50 rounded-lg">
+                            <div class="text-2xl font-bold text-orange-600">5개</div>
+                            <p class="text-sm text-gray-600">신규 사업 연계</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 계약 조건 및 혜택 -->
+    <section class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">📋 계약 조건 및 혜택</h2>
+                <p class="text-xl text-gray-600">상호 윈윈하는 공정한 협력 조건</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 계약 조건 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">✅ 기본 계약 조건</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-blue-600 mb-3">🤝 계약 기간</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 초기 계약: 1년 (자동 연장)</li>
+                                <li>• 파트너십 레벨에 따른 우대</li>
+                                <li>• 상호 합의 하에 조기 종료 가능</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-green-600 mb-3">💰 수수료 구조</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 숙박: 예약 금액의 15-30%</li>
+                                <li>• 체험: 예약 금액의 20-40%</li>
+                                <li>• 상품: 판매 금액의 10-20%</li>
+                                <li>• 교통: 고정 수수료</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-purple-600 mb-3">📊 정산 방식</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 월 단위 정산 (익월 15일)</li>
+                                <li>• 투명한 매출 공유 시스템</li>
+                                <li>• 세금계산서 자동 발행</li>
+                                <li>• 실시간 매출 모니터링</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 파트너 혜택 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">🎁 파트너 혜택</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-orange-600 mb-3">📈 마케팅 지원</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 통합 플랫폼 무료 노출</li>
+                                <li>• SNS 마케팅 공동 진행</li>
+                                <li>• 인플루언서 협업 기회</li>
+                                <li>• 홍보 영상/사진 제작 지원</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-teal-600 mb-3">🔧 운영 지원</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 예약 관리 시스템 제공</li>
+                                <li>• 고객 서비스 공동 대응</li>
+                                <li>• 교육 프로그램 제공</li>
+                                <li>• 품질 관리 컨설팅</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl shadow-lg">
+                            <h4 class="font-bold text-pink-600 mb-3">🌟 추가 혜택</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li>• 우수 파트너 인센티브</li>
+                                <li>• 신상품 우선 출시 기회</li>
+                                <li>• 파트너 전용 이벤트</li>
+                                <li>• 업계 네트워킹 기회</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 성과 평가 시스템 -->
+            <div class="mt-16 bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up">
+                <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">🏆 성과 평가 시스템</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">⭐</div>
+                        <h4 class="font-bold text-gray-900">골드 파트너</h4>
+                        <p class="text-sm text-gray-600 mb-2">월 매출 500만원 이상</p>
+                        <div class="text-xs text-yellow-600">추가 마케팅 지원</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-gray-400 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">⭐</div>
+                        <h4 class="font-bold text-gray-900">실버 파트너</h4>
+                        <p class="text-sm text-gray-600 mb-2">월 매출 300만원 이상</p>
+                        <div class="text-xs text-gray-600">표준 혜택</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">⭐</div>
+                        <h4 class="font-bold text-gray-900">브론즈 파트너</h4>
+                        <p class="text-sm text-gray-600 mb-2">월 매출 100만원 이상</p>
+                        <div class="text-xs text-orange-600">기본 혜택</div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">🌱</div>
+                        <h4 class="font-bold text-gray-900">신규 파트너</h4>
+                        <p class="text-sm text-gray-600 mb-2">계약 후 3개월</p>
+                        <div class="text-xs text-green-600">집중 지원</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    🤝 함께 성장할 파트너를 찾습니다
+                </h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    지속가능한 상생 관계로 새로운 관광 패러다임을 만들어가세요
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-lg hover:bg-blue-50 transition-colors">
+                        📋 전체 제안서 보기
+                    </a>
+                    <a href="mailto:partnership@zerowasteworkation.kr" class="bg-blue-800 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-900 transition-colors">
+                        📧 파트너십 문의
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">🌊 제로웨이스트 워케이션</h3>
+                    <p class="text-gray-300">MZ세대를 위한 지속가능한 바다 여행의 새로운 패러다임</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">파트너십</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>15개 협력 업체</li>
+                        <li>연 2억원 지역 기여</li>
+                        <li>20개 일자리 창출</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📧 partnership@zerowasteworkation.kr</li>
+                        <li>📞 033-269-8981</li>
+                        <li>🏆 2025 강원 해양관광 공모전</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 제로웨이스트 바다 워케이션 루트. 강원특별자치도 해양 관광 콘텐츠 공모전 출품작.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 파트너 상세 모달 -->
+    <div id="partnerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 id="modalTitle" class="text-2xl font-bold text-gray-900"></h3>
+                    <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div id="modalContent" class="space-y-4">
+                    <!-- 동적으로 채워질 내용 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 매출 분배 차트
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('revenueDistributionChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['숙박업', '체험업', '상품업', '교통업', '기술업', '운영비'],
+                    datasets: [{
+                        label: '매출 분배 (천만원)',
+                        data: [18, 12, 6, 3, 1, 20],
+                        backgroundColor: [
+                            '#3B82F6',
+                            '#10B981',
+                            '#8B5CF6',
+                            '#F59E0B',
+                            '#06B6D4',
+                            '#EF4444'
+                        ],
+                        borderRadius: 8,
+                        borderSkipped: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: '매출 (천만원)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // 파트너 상세 정보
+        const partnerDetails = {
+            workstay: {
+                title: '워크앤스테이 강릉',
+                content: `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-bold text-blue-600 mb-2">🏨 기본 정보</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 위치: 강릉시 안목해변 인근</li>
+                                <li>• 규모: 프리미엄 워케이션 공간</li>
+                                <li>• 특징: 오션뷰 개별 워크스페이스</li>
+                                <li>• 수용인원: 최대 50명</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-600 mb-2">💰 예상 수익</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 연간 매출: 8,000만원</li>
+                                <li>• 수수료율: 30%</li>
+                                <li>• 추가 부대시설 수익</li>
+                                <li>• 브랜딩 가치 상승</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-bold text-purple-600 mb-2">🎯 협력 내용</h4>
+                        <p class="text-sm text-gray-600">워케이션 메인 숙박 시설로 프리미엄 워크스페이스와 오션뷰 환경을 제공합니다. 제로웨이스트 키트 준비, 친환경 어메니티 도입, 실시간 환경 측정 시스템 설치 등을 통해 차별화된 경험을 제공합니다.</p>
+                    </div>
+                `
+            },
+            wavecompany: {
+                title: '더웨이브컴퍼니',
+                content: `
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-bold text-blue-600 mb-2">🌊 기본 정보</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 위치: 동해시 해변 일대</li>
+                                <li>• 전문분야: 해양 체험 프로그램</li>
+                                <li>• 경력: 5년 이상 운영</li>
+                                <li>• 특화: 친환경 해양 액티비티</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-green-600 mb-2">💰 예상 수익</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• 연간 매출: 6,000만원</li>
+                                <li>• 수수료율: 40%</li>
+                                <li>• 프로그램 다양화 수익</li>
+                                <li>• 브랜드 파트너십 혜택</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-bold text-purple-600 mb-2">🎯 협력 내용</h4>
+                        <p class="text-sm text-gray-600">비치클린업, 업사이클 워크숍, 해양 환경 교육 등 제로웨이스트와 연계된 체험 프로그램을 전문적으로 운영합니다. IoT 측정 시스템과 연동하여 참가자들의 환경보호 성과를 실시간으로 추적하고 게임화합니다.</p>
+                    </div>
+                `
+            }
+        };
+
+        function showPartnerDetail(partnerId) {
+            const modal = document.getElementById('partnerModal');
+            const title = document.getElementById('modalTitle');
+            const content = document.getElementById('modalContent');
+            
+            if (partnerDetails[partnerId]) {
+                title.textContent = partnerDetails[partnerId].title;
+                content.innerHTML = partnerDetails[partnerId].content;
+                modal.classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('partnerModal').classList.add('hidden');
+        }
+
+        // 모바일 메뉴
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            // 모바일 메뉴 토글 로직
+            console.log('Mobile menu clicked');
+        });
+
+        // 스크롤 시 네비게이션 배경 변경
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

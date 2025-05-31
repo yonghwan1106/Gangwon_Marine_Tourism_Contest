@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세 일정표 | 제로웨이스트 바다 워케이션</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0EA5E9',
+                        'primary-green': '#10B981',
+                        'primary-teal': '#06B6D4',
+                        'secondary-orange': '#F59E0B',
+                        'secondary-purple': '#8B5CF6',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full nav-glass shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-gradient">🌊 제로웨이스트 워케이션</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-primary-blue transition-colors">홈</a>
+                    <a href="datalab_analysis_report.html" class="text-gray-700 hover:text-primary-blue transition-colors">데이터 분석</a>
+                    <a href="benchmarking.html" class="text-gray-700 hover:text-primary-blue transition-colors">벤치마킹</a>
+                    <a href="partnership.html" class="text-gray-700 hover:text-primary-blue transition-colors">파트너십</a>
+                    <a href="business.html" class="text-gray-700 hover:text-primary-blue transition-colors">비즈니스</a>
+                    <a href="schedule.html" class="text-primary-blue font-semibold">일정표</a>
+                    <a href="proposal.html" class="text-gray-700 hover:text-primary-blue transition-colors">종합 제안서</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-[60vh] flex items-center relative overflow-hidden mt-16">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    📅 <span class="text-yellow-300">상세 일정표</span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 opacity-90">
+                    3박4일 완벽한 제로웨이스트 바다 워케이션 가이드
+                </p>
+                
+                <!-- 핵심 정보 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 mb-8">
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-yellow-300">3박4일</div>
+                        <p class="text-sm opacity-80">워케이션 기간</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-yellow-300">8개</div>
+                        <p class="text-sm opacity-80">포토존</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="600">
+                        <div class="text-3xl font-bold text-yellow-300">15개</div>
+                        <p class="text-sm opacity-80">체험 활동</p>
+                    </div>
+                    <div class="bg-white/20 backdrop-blur-sm rounded-lg p-4" data-aos="fade-up" data-aos-delay="800">
+                        <div class="text-3xl font-bold text-yellow-300">Zero</div>
+                        <p class="text-sm opacity-80">플라스틱 사용</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 일정 네비게이션 -->
+    <section class="py-8 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-center">
+                <div class="flex flex-wrap gap-4">
+                    <button class="day-btn active" data-day="1">
+                        <span class="block text-sm">Day 1</span>
+                        <span class="block font-bold">강릉 정착</span>
+                    </button>
+                    <button class="day-btn" data-day="2">
+                        <span class="block text-sm">Day 2</span>
+                        <span class="block font-bold">동해 워케이션</span>
+                    </button>
+                    <button class="day-btn" data-day="3">
+                        <span class="block text-sm">Day 3</span>
+                        <span class="block font-bold">심화 체험</span>
+                    </button>
+                    <button class="day-btn" data-day="4">
+                        <span class="block text-sm">Day 4</span>
+                        <span class="block font-bold">마무리</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 1 (목요일) - 강릉 정착 & 워케이션 준비 -->
+    <section id="day-1" class="day-content py-20 bg-gradient-to-br from-blue-50 to-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🌅 Day 1 (목요일) - 강릉 정착 & 워케이션 준비</h2>
+                <p class="text-xl text-gray-600">서울에서 강릉으로, 워케이션의 첫 발을 내딛다</p>
+            </div>
+
+            <!-- 타임라인 -->
+            <div class="relative">
+                <!-- 중앙 선 -->
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-blue-500 to-teal-500 hidden md:block"></div>
+                
+                <!-- 09:00-11:00 서울→강릉 이동 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🚄</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">09:00-11:00</h3>
+                                        <p class="text-blue-600 font-semibold">서울→강릉 이동 (KTX)</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm space-y-2">
+                                    <li>• KTX 청량리→강릉 (2시간 10분)</li>
+                                    <li>• 제로웨이스트 TIP: 텀블러 지참, 일회용품 거절</li>
+                                    <li>• 기차에서 워케이션 계획 최종 점검</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 11:30-13:00 워케이션 베이스캠프 체크인 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🏨</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">11:30-13:00</h3>
+                                        <p class="text-teal-600 font-semibold">워케이션 베이스캠프 체크인</p>
+                                    </div>
+                                </div>
+                                <div class="bg-teal-50 p-4 rounded-lg mb-4">
+                                    <h4 class="font-bold text-teal-800 mb-2">📍 워크앤스테이 강릉 (SL호텔)</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 강릉 주문진 오션뷰 호텔 + 전문 코워킹스페이스</li>
+                                        <li>• 프리미엄 데스크 + 대형 모니터 지원</li>
+                                        <li>• 키친 카페 무료 이용 (커피, 스낵)</li>
+                                        <li>• 인피니티풀, 사우나 부대시설 완비</li>
+                                    </ul>
+                                </div>
+                                <div class="photo-zone-tag">📸 포토존 #1: 오션뷰 워킹데스크</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13:00-14:30 제로웨이스트 키트 준비 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🌱</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">13:00-14:30</h3>
+                                        <p class="text-green-600 font-semibold">제로웨이스트 키트 준비</p>
+                                    </div>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg mb-4">
+                                    <h4 class="font-bold text-green-800 mb-2">📍 강릉역 주변 제로웨이스트 숍</h4>
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div>✓ 밀랍랩</div>
+                                        <div>✓ 리필용기</div>
+                                        <div>✓ 대나무 칫솔</div>
+                                        <div>✓ 고체비누</div>
+                                        <div>✓ 텀블러 & 빨대</div>
+                                        <div>✓ 접이식 도시락통</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">3</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 14:30-17:00 오후 업무 시간 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">4</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl mr-4">💻</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">14:30-17:00</h3>
+                                        <p class="text-purple-600 font-semibold">오후 업무 시간</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm space-y-2">
+                                    <li>• 워크앤스테이 프리미엄 데스크에서 집중 업무</li>
+                                    <li>• 오션뷰에서 업무하며 스트레스 해소</li>
+                                    <li>• 메일 처리, 화상회의</li>
+                                </ul>
+                                <div class="photo-zone-tag mt-4">📸 포토존 #2: 바다뷰 워킹데스크 인증</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 17:00-19:00 강릉 로컬 탐방 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl mr-4">☕</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">17:00-19:00</h3>
+                                        <p class="text-orange-600 font-semibold">강릉 로컬 탐방</p>
+                                    </div>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-orange-800 mb-2">📍 안목해변 커피거리</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 박이추커피공장: 1세대 바리스타의 명품 커피</li>
+                                        <li>• 카페 엘빈: 오션뷰 테라스에서 타르트와 커피</li>
+                                    </ul>
+                                </div>
+                                <div class="photo-zone-tag mt-4">📸 포토존 #3: 커피와 바다의 조화</div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">5</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 2 (금요일) - 동해 이동 & 해양 워케이션 -->
+    <section id="day-2" class="day-content py-20 bg-gradient-to-br from-green-50 to-blue-50 hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🌊 Day 2 (금요일) - 동해 이동 & 해양 워케이션</h2>
+                <p class="text-xl text-gray-600">바다와 함께하는 특별한 워킹 경험</p>
+            </div>
+
+            <!-- Day 2 타임라인 -->
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-green-500 to-blue-500 hidden md:block"></div>
+                
+                <!-- 07:00-08:00 모닝 루틴 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-yellow-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-yellow-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🧘</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">07:00-08:00</h3>
+                                        <p class="text-yellow-600 font-semibold">모닝 루틴</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm space-y-2">
+                                    <li>• 호텔 루프탑에서 일출 요가</li>
+                                    <li>• 워크앤스테이 전용 프로그램</li>
+                                    <li>• 몸과 마음 준비하기</li>
+                                </ul>
+                                <div class="photo-zone-tag mt-4">📸 포토존 #4: 일출과 함께하는 요가 실루엣</div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 10:00-11:30 강릉→동해 이동 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🚌</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">10:00-11:30</h3>
+                                        <p class="text-blue-600 font-semibold">강릉→동해 이동</p>
+                                    </div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-blue-800 mb-2">📍 동해 한섬해변 & 한섬감성바닷길</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 강릉에서 동해까지 버스 이동 (1시간)</li>
+                                        <li>• 한섬해변: 동해선 철길 아래 아담한 해변</li>
+                                        <li>• 감성바닷길 2.2km 산책로</li>
+                                    </ul>
+                                </div>
+                                <div class="photo-zone-tag mt-4">📸 포토존 #5: 감성바닷길 포토존들</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12:00-14:00 해변 워케이션 체험 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-teal-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center text-white text-xl mr-4">🏖️</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">12:00-14:00</h3>
+                                        <p class="text-teal-600 font-semibold">해변 워케이션 체험</p>
+                                    </div>
+                                </div>
+                                <div class="bg-teal-50 p-4 rounded-lg mb-4">
+                                    <h4 class="font-bold text-teal-800 mb-2">📍 한섬해변 모바일 오피스</h4>
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div>• 노트북 충전용 파워뱅크</div>
+                                        <div>• 포켓와이파이</div>
+                                        <div>• 캠핑 책상, 의자, 타프</div>
+                                        <div>• 솔숲에서 자연 속 업무</div>
+                                    </div>
+                                </div>
+                                <div class="photo-zone-tag">📸 포토존 #6: 바다를 바라보며 업무하는 모습</div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">3</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 17:30-19:00 제로웨이스트 쿠킹 클래스 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">4</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mr-4">👨‍🍳</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">17:30-19:00</h3>
+                                        <p class="text-green-600 font-semibold">제로웨이스트 쿠킹 클래스</p>
+                                    </div>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-green-800 mb-2">📍 펜션 주방</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 지역 식재료 활용 쿠킹</li>
+                                        <li>• 개인 용기로 구매한 재료 활용</li>
+                                        <li>• 음식물쓰레기 최소화 레시피</li>
+                                        <li>• 남은 음식 업사이클링 요리법</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 3 (토요일) - 심화 체험 & 지역 상생 -->
+    <section id="day-3" class="day-content py-20 bg-gradient-to-br from-purple-50 to-pink-50 hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🌱 Day 3 (토요일) - 심화 체험 & 지역 상생</h2>
+                <p class="text-xl text-gray-600">환경보호 실천과 지역사회와의 상생</p>
+            </div>
+
+            <!-- Day 3 타임라인 -->
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-purple-500 to-pink-500 hidden md:block"></div>
+                
+                <!-- 07:00-09:00 새벽 해변 정화 활동 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-600">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-xl mr-4">🧹</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">07:00-09:00</h3>
+                                        <p class="text-green-600 font-semibold">새벽 해변 정화 활동</p>
+                                    </div>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-green-800 mb-2">📍 한섬해변 비치클린업</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 환경보호 실천: 해변 쓰레기 수거</li>
+                                        <li>• 분리수거 및 플라스틱 분류</li>
+                                        <li>• 수거한 플라스틱으로 업사이클 체험 준비</li>
+                                    </ul>
+                                </div>
+                                <div class="photo-zone-tag mt-4">📸 포토존 #7: 비치클린업 Before & After</div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 09:00-11:00 업사이클 워크숍 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white text-xl mr-4">♻️</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">09:00-11:00</h3>
+                                        <p class="text-purple-600 font-semibold">업사이클 워크숍</p>
+                                    </div>
+                                </div>
+                                <div class="bg-purple-50 p-4 rounded-lg mb-4">
+                                    <h4 class="font-bold text-purple-800 mb-2">📍 동해 로컬 공방</h4>
+                                    <h5 class="font-semibold text-purple-700 mb-2">해양폐플라스틱 업사이클 제품:</h5>
+                                    <div class="grid grid-cols-2 gap-2 text-sm">
+                                        <div>• 스마트폰 스탠드</div>
+                                        <div>• 펜홀더</div>
+                                        <div>• 키링 또는 뱃지</div>
+                                        <div>• 개인 맞춤 소품</div>
+                                    </div>
+                                </div>
+                                <div class="photo-zone-tag">📸 포토존 #8: 손으로 만든 업사이클 제품</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 15:00-17:00 워케이션 심화 프로그램 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-600">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl mr-4">💡</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">15:00-17:00</h3>
+                                        <p class="text-blue-600 font-semibold">워케이션 심화 프로그램</p>
+                                    </div>
+                                </div>
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-blue-800 mb-2">📍 동해 코워킹 스페이스</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 크리에이티브 세션: 제로웨이스트 아이디어</li>
+                                        <li>• 네트워킹: 다른 참가자들과 교류</li>
+                                        <li>• 미니 프레젠테이션: 체험 발표</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">3</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Day 4 (일요일) - 마무리 & 지속가능한 다짐 -->
+    <section id="day-4" class="day-content py-20 bg-gradient-to-br from-orange-50 to-yellow-50 hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">🌟 Day 4 (일요일) - 마무리 & 지속가능한 다짐</h2>
+                <p class="text-xl text-gray-600">워케이션의 마무리와 새로운 시작을 위한 다짐</p>
+            </div>
+
+            <!-- Day 4 타임라인 -->
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-500 to-yellow-500 hidden md:block"></div>
+                
+                <!-- 08:00-10:00 마지막 워케이션 세션 -->
+                <div class="timeline-item mb-16" data-aos="fade-right">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pr-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center text-white text-xl mr-4">📝</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">08:00-10:00</h3>
+                                        <p class="text-orange-600 font-semibold">마지막 워케이션 세션</p>
+                                    </div>
+                                </div>
+                                <div class="bg-orange-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-orange-800 mb-2">📍 호텔 라운지</h4>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 회고 세션: 3박4일 워케이션 리뷰</li>
+                                        <li>• 지속가능한 워라밸 계획 수립</li>
+                                        <li>• 네트워킹: 연락처 교환</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">1</div>
+                        <div class="w-full md:w-5/12 md:pl-8"></div>
+                    </div>
+                </div>
+
+                <!-- 11:30-12:30 제로웨이스트 성과 정리 -->
+                <div class="timeline-item mb-16" data-aos="fade-left">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="w-full md:w-5/12 md:pr-8"></div>
+                        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm z-10">2</div>
+                        <div class="w-full md:w-5/12 mb-6 md:mb-0 md:pl-8">
+                            <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white text-xl mr-4">📊</div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900">11:30-12:30</h3>
+                                        <p class="text-green-600 font-semibold">제로웨이스트 성과 정리</p>
+                                    </div>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h4 class="font-bold text-green-800 mb-2">📍 강릉역 대합실</h4>
+                                    <h5 class="font-semibold text-green-700 mb-2">환경보호 성과 측정:</h5>
+                                    <ul class="text-sm space-y-1">
+                                        <li>• 절약한 일회용품 개수</li>
+                                        <li>• 재활용/업사이클한 물품 개수</li>
+                                        <li>• 탄소발자국 절감량 계산</li>
+                                        <li>• 지속가능한 여행 가이드북 제작</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 포토존 가상 투어 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">📸 포토존 가상 투어</h2>
+                <p class="text-xl text-gray-600">8개 인스타 핫플레이스 미리보기</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 포토존 1 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        🏨
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #1</h3>
+                        <p class="text-sm text-gray-600 mb-3">오션뷰 워킹데스크</p>
+                        <div class="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full inline-block">Day 1</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 2 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        💻
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #2</h3>
+                        <p class="text-sm text-gray-600 mb-3">바다뷰 워킹데스크 인증</p>
+                        <div class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-full inline-block">Day 1</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 3 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="bg-gradient-to-br from-orange-400 to-orange-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        ☕
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #3</h3>
+                        <p class="text-sm text-gray-600 mb-3">커피와 바다의 조화</p>
+                        <div class="text-xs bg-orange-50 text-orange-700 px-2 py-1 rounded-full inline-block">Day 1</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 4 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="bg-gradient-to-br from-yellow-400 to-yellow-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        🧘
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #4</h3>
+                        <p class="text-sm text-gray-600 mb-3">일출과 함께하는 요가</p>
+                        <div class="text-xs bg-yellow-50 text-yellow-700 px-2 py-1 rounded-full inline-block">Day 2</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 5 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="bg-gradient-to-br from-blue-400 to-blue-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        🌊
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #5</h3>
+                        <p class="text-sm text-gray-600 mb-3">감성바닷길 포토존들</p>
+                        <div class="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full inline-block">Day 2</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 6 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="bg-gradient-to-br from-teal-400 to-teal-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        🏖️
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #6</h3>
+                        <p class="text-sm text-gray-600 mb-3">바다를 바라보며 업무</p>
+                        <div class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-full inline-block">Day 2</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 7 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="700">
+                    <div class="bg-gradient-to-br from-green-400 to-green-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        🧹
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #7</h3>
+                        <p class="text-sm text-gray-600 mb-3">비치클린업 Before & After</p>
+                        <div class="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-full inline-block">Day 3</div>
+                    </div>
+                </div>
+
+                <!-- 포토존 8 -->
+                <div class="photo-zone-card" data-aos="fade-up" data-aos-delay="800">
+                    <div class="bg-gradient-to-br from-purple-400 to-purple-600 h-48 rounded-t-xl flex items-center justify-center text-white text-6xl">
+                        ♻️
+                    </div>
+                    <div class="bg-white p-6 rounded-b-xl shadow-lg">
+                        <h3 class="font-bold text-gray-900 mb-2">포토존 #8</h3>
+                        <p class="text-sm text-gray-600 mb-3">업사이클 제품 제작</p>
+                        <div class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-full inline-block">Day 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 제로웨이스트 실천 체크리스트 -->
+    <section class="py-20 bg-gradient-to-br from-green-50 to-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">✅ 제로웨이스트 실천 체크리스트</h2>
+                <p class="text-xl text-gray-600">3박4일 동안 실천할 친환경 활동들</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- 필수 준비물 -->
+                <div data-aos="fade-right">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">🎒 필수 준비물</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-green-600 rounded mr-3">
+                                <span class="flex-1">휴대용 텀블러 & 빨대</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-green-600 rounded mr-3">
+                                <span class="flex-1">밀랍랩 3종 세트</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-green-600 rounded mr-3">
+                                <span class="flex-1">접이식 실리콘 용기</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-green-600 rounded mr-3">
+                                <span class="flex-1">대나무 칫솔 & 고체치약</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-green-600 rounded mr-3">
+                                <span class="flex-1">친환경 세제 리필용기</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 일일 실천사항 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">📝 일일 실천사항</h3>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                                <span class="flex-1">일회용 컵 대신 개인 텀블러 사용</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                                <span class="flex-1">플라스틱 포장재 거절하기</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                                <span class="flex-1">음식물 쓰레기 최소화</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                                <span class="flex-1">대중교통 이용하기</span>
+                            </label>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-md">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="w-5 h-5 text-blue-600 rounded mr-3">
+                                <span class="flex-1">해변 쓰레기 수거 참여</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 성과 측정 -->
+            <div class="mt-16" data-aos="fade-up">
+                <div class="bg-white p-8 rounded-2xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">📊 예상 환경보호 성과</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">🥤</div>
+                            <h4 class="font-bold text-gray-900">일회용품 절약</h4>
+                            <p class="text-3xl font-bold text-green-600">70%</p>
+                            <p class="text-sm text-gray-600">약 25개 절약</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">♻️</div>
+                            <h4 class="font-bold text-gray-900">플라스틱 절감</h4>
+                            <p class="text-3xl font-bold text-blue-600">80%</p>
+                            <p class="text-sm text-gray-600">약 2kg 절감</p>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center text-white text-2xl mx-auto mb-4">🌱</div>
+                            <h4 class="font-bold text-gray-900">탄소발자국</h4>
+                            <p class="text-3xl font-bold text-purple-600">30%</p>
+                            <p class="text-sm text-gray-600">약 15kg 감소</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 예상 비용 안내 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">💰 예상 비용 안내</h2>
+                <p class="text-xl text-gray-600">투명한 비용 구조로 안심하고 준비하세요</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- 비용 차트 -->
+                <div data-aos="fade-right">
+                    <div class="bg-gradient-to-br from-blue-50 to-green-50 p-8 rounded-2xl">
+                        <h3 class="text-2xl font-bold text-center text-gray-900 mb-8">비용 구성 (1인 기준)</h3>
+                        <div class="chart-container" style="position: relative; height: 300px; width: 100%; overflow: hidden;">
+                            <canvas id="costChart" style="max-width: 100%; max-height: 100%;"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 비용 상세 -->
+                <div data-aos="fade-left">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">📋 비용 상세 내역</h3>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-blue-800">숙박비 (3박)</span>
+                                <span class="text-xl font-bold text-blue-600">300,000원</span>
+                            </div>
+                            <p class="text-sm text-blue-600">워크앤스테이 + 부티크 펜션 + 부티크 호텔</p>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-green-800">식비</span>
+                                <span class="text-xl font-bold text-green-600">160,000원</span>
+                            </div>
+                            <p class="text-sm text-green-600">식사비 + 카페/음료 (로컬 맛집 위주)</p>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-purple-800">체험비</span>
+                                <span class="text-xl font-bold text-purple-600">160,000원</span>
+                            </div>
+                            <p class="text-sm text-purple-600">제로웨이스트 키트 + 워크숍 + 활동비</p>
+                        </div>
+
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="flex justify-between items-center">
+                                <span class="font-semibold text-orange-800">교통비</span>
+                                <span class="text-xl font-bold text-orange-600">90,000원</span>
+                            </div>
+                            <p class="text-sm text-orange-600">KTX 왕복 + 지역 내 이동</p>
+                        </div>
+
+                        <div class="bg-gray-100 p-6 rounded-lg border-2 border-gray-300">
+                            <div class="flex justify-between items-center">
+                                <span class="text-lg font-bold text-gray-900">총 비용</span>
+                                <span class="text-2xl font-bold text-red-600 line-through">710,000원</span>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="text-lg font-semibold text-green-800">패키지 할인가</span>
+                                <span class="text-3xl font-bold text-green-600">500,000원</span>
+                            </div>
+                            <p class="text-sm text-green-600 mt-2">210,000원 절약! (30% 할인)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-600 to-green-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div data-aos="fade-up">
+                <h2 class="text-4xl font-bold text-white mb-6">
+                    📅 지금 바로 예약하세요
+                </h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    3박4일 제로웨이스트 바다 워케이션으로 새로운 여행 문화를 경험해보세요
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="index.html" class="bg-white text-blue-600 font-bold py-4 px-8 rounded-lg hover:bg-blue-50 transition-colors">
+                        📋 전체 제안서 보기
+                    </a>
+                    <a href="mailto:info@zerowasteworkation.kr" class="bg-blue-800 text-white font-bold py-4 px-8 rounded-lg hover:bg-blue-900 transition-colors">
+                        📧 예약 문의하기
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">🌊 제로웨이스트 워케이션</h3>
+                    <p class="text-gray-300">MZ세대를 위한 지속가능한 바다 여행의 새로운 패러다임</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">일정 정보</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>3박4일 완벽 코스</li>
+                        <li>8개 포토존</li>
+                        <li>15개 체험 활동</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>📧 info@zerowasteworkation.kr</li>
+                        <li>📞 033-269-8981</li>
+                        <li>🏆 2025 강원 해양관광 공모전</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 제로웨이스트 바다 워케이션 루트. 강원특별자치도 해양 관광 콘텐츠 공모전 출품작.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // 일정 네비게이션
+        document.addEventListener('DOMContentLoaded', function() {
+            const dayBtns = document.querySelectorAll('.day-btn');
+            const dayContents = document.querySelectorAll('.day-content');
+
+            dayBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const day = this.getAttribute('data-day');
+                    
+                    // 모든 버튼과 콘텐츠 비활성화
+                    dayBtns.forEach(b => b.classList.remove('active'));
+                    dayContents.forEach(c => c.classList.add('hidden'));
+                    
+                    // 선택된 버튼과 콘텐츠 활성화
+                    this.classList.add('active');
+                    document.getElementById(`day-${day}`).classList.remove('hidden');
+                });
+            });
+
+            // 비용 차트 생성
+            const costCtx = document.getElementById('costChart').getContext('2d');
+            new Chart(costCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['숙박비', '식비', '체험비', '교통비'],
+                    datasets: [{
+                        data: [300, 160, 160, 90],
+                        backgroundColor: ['#0EA5E9', '#10B981', '#8B5CF6', '#F59E0B'],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: {
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // 모바일 메뉴 토글
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            console.log('Mobile menu clicked');
+        });
+    </script>
+
+    <style>
+        /* 일정 네비게이션 버튼 스타일 */
+        .day-btn {
+            @apply px-6 py-4 bg-white rounded-lg shadow-md transition-all duration-300 cursor-pointer text-center min-w-[120px];
+        }
+        
+        .day-btn:hover {
+            @apply shadow-lg transform -translate-y-1;
+        }
+        
+        .day-btn.active {
+            @apply bg-gradient-to-r from-blue-500 to-green-500 text-white shadow-xl;
+        }
+
+        /* 포토존 태그 스타일 */
+        .photo-zone-tag {
+            @apply inline-block bg-gradient-to-r from-pink-500 to-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full;
+        }
+
+        /* 포토존 카드 호버 효과 */
+        .photo-zone-card {
+            @apply transition-all duration-300 cursor-pointer;
+        }
+        
+        .photo-zone-card:hover {
+            @apply transform -translate-y-2 shadow-xl;
+        }
+
+        /* 타임라인 아이템 애니메이션 */
+        .timeline-item {
+            @apply transition-all duration-300;
+        }
+        
+        .timeline-item:hover {
+            @apply transform scale-105;
+        }
+    </style>
+</body>
+</html>
